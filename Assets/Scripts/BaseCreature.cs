@@ -1,16 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class BaseCreature : MonoBehaviour {
+interface BaseCreature
+{
+    int health { get; set; }
+    int basicAttackDamage { get; set; }
+    int movementSpeed { get; set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Move();
+    void TakeDamage(int damage);
+    void BasicAttack();
 }
