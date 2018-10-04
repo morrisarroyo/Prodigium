@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragon : MonoBehaviour, BaseCreature
+public class Dragon : BaseCreature
 {
-    public int health { get; set; }
-    public int basicAttackDamage { get; set; }
-    public int movementSpeed { get; set; }
+	public int health;
+	public int basicAttackDamage;
+	public int movementSpeed;
 
     Rigidbody rb;
 
@@ -19,22 +19,27 @@ public class Dragon : MonoBehaviour, BaseCreature
     // Update is called once per frame
     void Update()
     {
-
+		
     }
 
-    public void BasicAttack()
+	protected override void BasicAttack()
+	{
+		throw new System.NotImplementedException ();
+    }
+
+    protected override void Move()
+	{
+		throw new System.NotImplementedException ();
+    }
+
+    protected void TakeDamage(int damage)
     {
-        throw new System.NotImplementedException();
+		base.TakeDamage(damage);
     }
 
-    public void Move()
-    {
-
-    }
-
-    public void TakeDamage(int damage)
-    {
-        throw new System.NotImplementedException();
-    }
+	protected override void Die ()
+	{
+		throw new System.NotImplementedException ();
+	}
 
 }

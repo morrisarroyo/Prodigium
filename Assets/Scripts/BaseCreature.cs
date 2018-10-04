@@ -1,13 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-interface BaseCreature
+public abstract class BaseCreature : MonoBehaviour
 {
-    int health { get; set; }
-    int basicAttackDamage { get; set; }
-    int movementSpeed { get; set; }
+	protected int health { get; set; }
+	protected int basicAttackDamage { get; set; }
+	protected int movementSpeed { get; set;}
 
-    void Move();
-    void TakeDamage(int damage);
-    void BasicAttack();
+	public enum creatureState {
+		idle,
+		walking,
+		attacking,
+		dead,
+		spawning
+	}
+
+	protected abstract void Move ();
+
+	protected void TakeDamage(int damage){
+		health = health - damage;
+	}
+
+	protected abstract void BasicAttack ();
+
+	protected abstract void Die ();
+
 }
