@@ -31,7 +31,7 @@ public class Dragon : BaseCreature
 		throw new System.NotImplementedException ();
     }
 
-    public void Move()
+	protected override void Move()
     {
         if (player != null)
         {
