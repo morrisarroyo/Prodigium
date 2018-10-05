@@ -37,9 +37,9 @@ public class Zombie : BaseCreature {
 	// Update is called once per frame
 	void Update ()
 	{
-		//if (state == creatureState.walking) {
+		if (!anim.GetCurrentAnimatorStateInfo(0).IsName("riseFromTheGroundNormal")) {
 			Move ();
-		
+		}
 	}
 		
 	protected override void Move()
