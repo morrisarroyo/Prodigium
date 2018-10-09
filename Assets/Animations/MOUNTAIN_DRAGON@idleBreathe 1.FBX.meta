@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5e145f6495a33c7458015288d0b47227
-timeCreated: 1465405097
+guid: a2f396305f3c3ec498a5c9cbffe50221
+timeCreated: 1465405094
 licenseType: Store
 ModelImporter:
   serializedVersion: 19
@@ -213,7 +213,7 @@ ModelImporter:
     400202: MOUNTAIN_DRAGON_WING_R_FINGER_D_3
     400204: MOUNTAIN_DRAGON_WING_R_FOREARM
     400206: MOUNTAIN_DRAGON_WING_R_HAND
-    7400000: walk_RM
+    7400000: idleBreathe
     9500000: //RootNode
     11100000: //RootNode
   materials:
@@ -232,29 +232,29 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
-    animationScaleError: 0.1
+    animationScaleError: 0.5
     animationWrapMode: 2
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: walk_RM
+      name: idleBreathe
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
