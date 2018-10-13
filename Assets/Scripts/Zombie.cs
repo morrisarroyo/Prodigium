@@ -38,17 +38,19 @@ public class Zombie : BaseCreature {
 	void Update ()
 	{
 		anim.SetBool("walking", walking);
-
 		if (!walking) {
 			anim.SetBool ("idle", true);
 		} else {
 			anim.SetBool ("idle", false);
 		}
 		float distance = Vector3.Distance (transform.position, target.position);
-		if (distance <= lookRadius) {
-			Move ();
+		if (!anim.GetCurrentAnimatorStateInfo(0).IsName("riseFromTheGroundNormal")){
+			if (distance <= lookRadius) {
+				Move ();
+			}
+		} else {
+			
 		}
-
 	}
 		
 	protected override void Move()
@@ -65,6 +67,7 @@ public class Zombie : BaseCreature {
 	protected void TakeDamage(int damage)
 	{
 		base.TakeDamage (damage);
+		anim.SetTrigger ("attacked");
 	}
 
 	protected override void BasicAttack()
@@ -80,7 +83,7 @@ public class Zombie : BaseCreature {
 
 	protected override void Die ()
 	{
-		
+		anim.SetTrigger ("dead");
 	}
 
 	void OnDrawGizmos(){

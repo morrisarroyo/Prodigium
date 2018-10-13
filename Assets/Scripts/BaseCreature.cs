@@ -20,6 +20,8 @@ public abstract class BaseCreature : MonoBehaviour
 
 	protected void TakeDamage(int damage){
 		health = health - damage;
+		if(health <= 0)
+			Die ();
 	}
 
 	protected abstract void BasicAttack ();
