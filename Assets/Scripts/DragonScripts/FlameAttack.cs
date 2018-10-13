@@ -37,8 +37,8 @@ public class FlameAttack : MonoBehaviour, IDragonAttack
         return repeatCount == 0;
     }
 
-    public void CanDo()
+    public bool CanDo()
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 }

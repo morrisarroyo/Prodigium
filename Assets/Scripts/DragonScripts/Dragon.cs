@@ -22,7 +22,7 @@ public class Dragon : MonoBehaviour, BaseCreature
     bool isAttacking = false;
     List<IDragonAction> actions;
     IDragonAction currentAction;
-    GameObject player;
+    public GameObject player;
     Rigidbody rb;
     Animator anim;
 
@@ -203,7 +203,7 @@ public class Dragon : MonoBehaviour, BaseCreature
         throw new System.NotImplementedException();
     }
 
-    private GameObject GetPlayerToTrack()
+    GameObject GetPlayerToTrack()
     {
         GameObject player = null;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");

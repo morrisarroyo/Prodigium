@@ -9,5 +9,5 @@ interface IDragonAction
 
     bool IsDone();
     void Do();
-    void CanDo();
+    bool CanDo();
 }
