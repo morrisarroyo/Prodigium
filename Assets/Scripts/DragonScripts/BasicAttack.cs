@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 
-public class BasicAttack : MonoBehaviour, IDragonAttack
+public class BasicAttack : DragonAttack
 {
-    public int repeatCount;
-    public float minTriggerRange;
-    public float maxTriggerRange;
 
-    public string Name
+
+    public override string Name
     {
         get
         {
@@ -15,30 +13,23 @@ public class BasicAttack : MonoBehaviour, IDragonAttack
     }
 
 
-    public bool IsDoing
+    public override bool IsDoing
     {
-        get
-        {
-            return IsDoing;
-        }
-
-        set
-        {
-            IsDoing = value;
-        }
+        get;
+        set;
     }
 
-    public void Do()
+    public override void Do()
     {
         throw new System.NotImplementedException();
     }
 
-    public bool IsDone()
+    public override bool IsDone()
     {
         return repeatCount == 0;
     }
 
-    public void CanDo()
+    public override bool CanDo()
     {
         throw new System.NotImplementedException();
     }

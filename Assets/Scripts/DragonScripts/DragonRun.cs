@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonWalk : MonoBehaviour, IDragonAction
+public class DragonRun : MonoBehaviour, IDragonAction
 {
     Animator anim;
     GameObject player;
     Transform target;
 
-    const string isWalkingStr = "IsWalking";
-    public float movementSpeed = 6f;
+    const string isRunningStr = "IsRunning";
+    public float movementSpeed = 12f;
     public float rotationSpeed = 3f;
     public Dragon dragon;
-    public bool walkTowards = true;
-    public float distance = 3f;
+    public bool runTowards = false;
+    public float distance = 12f;
 
     public string Name
     {
         get
         {
-            return "Walk";
+            return "Run";
         }
     }
 
@@ -48,7 +48,7 @@ public class DragonWalk : MonoBehaviour, IDragonAction
 
     public void Set(bool towards, float dist)
     {
-        walkTowards = towards;
+        runTowards = towards;
         distance = dist;
     }
 
@@ -67,13 +67,13 @@ public class DragonWalk : MonoBehaviour, IDragonAction
             if (!IsDone())
             {
                 IsDoing = true;
-                if (walkTowards)
+                if (runTowards)
                 {
-                    WalkTowards();
+                    RunTowards();
                 }
                 else
                 {
-                    WalkAway();
+                    RunAway();
                 }
             }
             else
@@ -87,14 +87,14 @@ public class DragonWalk : MonoBehaviour, IDragonAction
 
     public bool IsDone()
     {
-        if (walkTowards)
+        if (runTowards)
         {
             return Vector3.Distance(transform.position, player.transform.position) <= distance;
         }
         else
         {
+            transform.Rotate(0, 180, 0);
             return Vector3.Distance(transform.position, player.transform.position) >= distance;
-
         }
     }
 
@@ -109,7 +109,7 @@ public class DragonWalk : MonoBehaviour, IDragonAction
         target = player.transform;
     }
 
-    private void WalkTowards()
+    private void RunTowards()
     {
 
         //if (Vector3.Distance(transform.position, target.position))
@@ -124,20 +124,20 @@ public class DragonWalk : MonoBehaviour, IDragonAction
         //}
     }
 
-    private void WalkAway()
+    private void RunAway()
     {
 
         //if (Vector3.Distance(transform.position, target.position) < distance)
         //{
         transform.LookAt(target);
-        //transform.Rotate(0, 180, 0);
+        transform.Rotate(0, 180, 0);
         transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
 
         Vector3 targetDir = player.transform.position - transform.position;
-        targetDir.x = -targetDir.x;
-        targetDir.z = -targetDir.z;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotationSpeed * Time.deltaTime, 0f);
-        transform.rotation = Quaternion.LookRotation(newDir);
+        //targetDir.x = -targetDir.x;
+        //targetDir.z = -targetDir.z;
+        //Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotationSpeed * Time.deltaTime, 0f);
+        //transform.rotation = Quaternion.LookRotation(newDir);
 
         StartMovementAnimation();
         //}
@@ -145,11 +145,11 @@ public class DragonWalk : MonoBehaviour, IDragonAction
 
     private void StartMovementAnimation()
     {
-        anim.SetBool(isWalkingStr, true);
+        anim.SetBool(isRunningStr, true);
     }
 
     private void StopMovementAnimation()
     {
-        anim.SetBool(isWalkingStr, false);
+        anim.SetBool(isRunningStr, false);
     }
 }

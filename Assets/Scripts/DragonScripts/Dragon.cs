@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragon : MonoBehaviour, BaseCreature
+public class Dragon : BaseCreature
 {
-    public const string tag = "Dragon";
+    //public const string tag = "Dragon";
     const string isWalkingStr = "IsWalking";
     const string isFlyingStr = "IsFlying";
     const string basicAttackStr = "BasicAttack";
@@ -12,14 +12,15 @@ public class Dragon : MonoBehaviour, BaseCreature
     const float basicAttackMaxDistance = 1f;
     const float flameAttackMaxDistance = 1f;
 
-    public int health;
-    public int basicAttackDamage;
+    //public int health;
+    //public int basicAttackDamage;
     public float flyingSpeed = 2f;
-    public float movementSpeed = 6f;
+    //public float movementSpeed = 6f;
     public float rotationSpeed = 3f;
     public float climbHeight = 5f;
 
     bool isAttacking = false;
+    string previousAnimationName = "";
     List<IDragonAction> actions;
     IDragonAction currentAction;
     public GameObject player;
@@ -27,42 +28,82 @@ public class Dragon : MonoBehaviour, BaseCreature
     Animator anim;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
         player = GetPlayerToTrack();
-        actions = new List<IDragonAction>() { gameObject.GetComponent<BasicAttack>(), gameObject.GetComponent<FlameAttack>() };
-        currentAction = actions[1];
+        actions = new List<IDragonAction>() { gameObject.GetComponent<DragonWalk>(), gameObject.GetComponent<DragonRun>(), gameObject.GetComponent<FlameAttack>() };
+        currentAction = actions[0];
     }
 
+
+    void Start()
+    {
+        //gameObject.GetComponent<FlameAttack>().Do();
+    }
     // Update is called once per frame
     void Update()
     {
         Do();
+
         //Climb();
     }
 
     public void Do()
     {
-        if (actions[1] is IDragonAttack)
+
+        currentAction = actions[0];
+        if (actions[0] is DragonAttack)
         {
-            if (CanAttack())
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            Rotate();
+
+            if (!isAttacking)
             {
-                Rotate();
-                Attack();
+                isAttacking = true;
+                actions[0].Do();
+
             }
+            if (!actions[0].IsDoing)
+            {
+                previousAnimationName = actions[0].Name;
+                actions.RemoveAt(0);
+            }
+
         }
-
-
         else
         {
-            isAttacking = false;
-            Move();
+            if (!IsPlayingAnimation(previousAnimationName))
+            {
+                actions[0].Do();
+                if (!actions[0].IsDoing)
+                {
+                    actions.RemoveAt(0);
+                }
+            }
         }
-
+        if (actions.Count == 0)
+        {
+            actions.Insert(0, gameObject.GetComponent<DragonRun>());
+            actions.Insert(0, gameObject.GetComponent<DragonWalk>());
+        }
     }
+
+    public bool IsPlayingAnimation(string name)
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(name) &&
+                anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     public void Rotate()
     {
@@ -74,14 +115,15 @@ public class Dragon : MonoBehaviour, BaseCreature
             transform.rotation = Quaternion.LookRotation(newDir);
         }
     }
-    public void BasicAttack()
+    protected override void BasicAttack()
     {
     }
 
+    /*
     private bool CanAttack()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (distance < 10f)
+        if (distance < 20f)
         {
             Debug.Log(distance);
             return true;
@@ -110,7 +152,7 @@ public class Dragon : MonoBehaviour, BaseCreature
             anim.SetTrigger(currentAction.Name);
     }
 
-    public void Move()
+    protected override void Move()
     {
         if (player != null)
         {
@@ -196,13 +238,7 @@ public class Dragon : MonoBehaviour, BaseCreature
     {
         anim.SetBool(isWalkingStr, false);
     }
-
-
-    public void TakeDamage(int damage)
-    {
-        throw new System.NotImplementedException();
-    }
-
+    */
     GameObject GetPlayerToTrack()
     {
         GameObject player = null;
@@ -212,5 +248,15 @@ public class Dragon : MonoBehaviour, BaseCreature
             player = GameObject.FindGameObjectsWithTag("Player")[0];
         }
         return player;
+    }
+
+    protected override void Die()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void Move()
+    {
+        throw new System.NotImplementedException();
     }
 }

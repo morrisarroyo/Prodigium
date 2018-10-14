@@ -1,12 +1,32 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
-public class FlameAttack : MonoBehaviour, IDragonAttack
+public class FlameAttack : DragonAttack
 {
-    public int repeatCount;
-    public float minTriggerRange;
-    public float maxTriggerRange;
 
-    public string Name
+    Animator anim;
+    GameObject player;
+
+    // Use this for initialization
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        IsDoing = false;
+        repeatCount = 3; // -1
+        currentRepeatCount = repeatCount;
+        minTriggerRange = 10f;
+        maxTriggerRange = 15f;
+    }
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public override string Name
     {
         get
         {
@@ -14,31 +34,48 @@ public class FlameAttack : MonoBehaviour, IDragonAttack
         }
     }
 
-    public bool IsDoing
+    public override bool IsDoing
     {
-        get
+        get;
+        set;
+    }
+
+    public override void Do()
+    {
+
+
+        if (!IsDone())
         {
-            return IsDoing;
+            IsDoing = true;
+            TriggerAttackAnimation();
         }
-
-        set
+    }
+    private void TriggerAttackAnimation()
+    {
+        if (IsDoing)
         {
-            IsDoing = value;
+
+            if (IsDone())
+            {
+                IsDoing = false;
+            }
+            else
+            {
+                anim.SetTrigger(Name);
+            }
+
+            --currentRepeatCount;
         }
     }
 
-    public void Do()
+
+    public override bool IsDone()
     {
-        throw new System.NotImplementedException();
+        return currentRepeatCount <= 0;
     }
 
-    public bool IsDone()
+    public override bool CanDo()
     {
-        return repeatCount == 0;
-    }
-
-    public bool CanDo()
-    {
-        return false;
+        return true;
     }
 }

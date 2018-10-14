@@ -282,7 +282,7 @@ ModelImporter:
       - time: 1
         functionName: TriggerAttackAnimation
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e83f65bba55d1434488a2fa7817e0d2d,
+        objectReferenceParameter: {fileID: 11500000, guid: 45ce61f83867fa3469284fa269582ed5,
           type: 3}
         floatParameter: 0
         intParameter: 0
