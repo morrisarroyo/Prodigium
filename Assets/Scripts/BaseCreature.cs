@@ -18,7 +18,7 @@ public abstract class BaseCreature : MonoBehaviour
 
 	protected abstract void Move ();
 
-	protected void TakeDamage(int damage){
+	protected void TakeDamage(int damage) {
 		health = health - damage;
 	}
 
