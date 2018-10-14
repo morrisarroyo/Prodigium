@@ -4,36 +4,24 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour {
 
-	[Header("Target")]
 	public Transform target;
-	[Header("Distance Settings")]
-	public float distance = 5f;
-	public Vector3 offset;
-	public float minDistance = 1f;
-	public float maxDistance = 7f;
-	[Header("Speed Settings")]
-	public float smoothSpeed = 5f;
-	public float scrollSensitivity = 1f;
+	public float smoothing = 5f;
+
+	Vector3 offset;
 
 	// Use this for initialization
 	void Start () {
-		
+		offset = transform.position - target.position;
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+	void FixedUpdate () {
 		if (!target) {
 			print ("NO TARGET SET FOR CAMERA");
 			return;
 		}
 
-		float num = Input.GetAxis ("Mouse ScrollWheel");
-		distance -= num * scrollSensitivity;
-		distance = Mathf.Clamp (distance, minDistance, maxDistance);
-
-		Vector3 pos = target.position + offset;
-		pos -= transform.forward * distance;
-
-		transform.position = Vector3.Lerp (transform.position, pos, smoothSpeed * Time.deltaTime);
+		Vector3 targetCamPos = target.position + offset;
+		transform.position = Vector3.Lerp (transform.position, targetCamPos, smoothing * Time.deltaTime);
 	}
 }

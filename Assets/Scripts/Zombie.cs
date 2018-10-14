@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEditor;
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -9,10 +10,10 @@ using UnityEngine.AI;
 
 public class Zombie : BaseCreature {
 
-	public int health = 100;
-	public int basicAttackDamage = 10;
-	public int movementSpeed = 5;
-	public creatureState state;
+	protected int health = 100;
+	protected int basicAttackDamage = 10;
+	protected int movementSpeed = 5;
+	public bool walking;
 
 	Transform target;
 	Animator anim;
@@ -22,12 +23,11 @@ public class Zombie : BaseCreature {
 	public float attackRadius;
 
 	private float nextAttack;
-	public float attackSpeed = 1f;
+	public float attackSpeed = 2f;
 
 	// Use this for initialization
 	void Awake ()
 	{
-		state = creatureState.spawning;
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		nav = GetComponent<NavMeshAgent> ();
 		anim = GetComponent<Animator> ();
@@ -37,28 +37,59 @@ public class Zombie : BaseCreature {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!anim.GetCurrentAnimatorStateInfo(0).IsName("riseFromTheGroundNormal")) {
-			Move ();
+		anim.SetBool("walking", walking);
+		if (!walking) {
+			anim.SetBool ("idle", true);
+		} else {
+			anim.SetBool ("idle", false);
+		}
+		float distance = Vector3.Distance (transform.position, target.position);
+		if (!anim.GetCurrentAnimatorStateInfo(0).IsName("riseFromTheGroundNormal")){
+			if (distance <= lookRadius) {
+				Move ();
+			}
+		} else {
+			
 		}
 	}
 		
 	protected override void Move()
 	{
-		nav.SetDestination (target.position);
+		nav.destination = target.position;
+		if (!nav.pathPending && nav.remainingDistance > attackRadius) {
+			nav.isStopped = false;
+			walking = true;
+		} else if (!nav.pathPending && nav.remainingDistance <= attackRadius) {
+			BasicAttack ();
+		}
 	}
 		
 	protected void TakeDamage(int damage)
 	{
 		base.TakeDamage (damage);
+		anim.SetTrigger ("attacked");
 	}
 
 	protected override void BasicAttack()
 	{
-		
+		transform.LookAt (target);
+		if (Time.time > nextAttack) {
+			nextAttack = Time.time + attackSpeed;
+			anim.SetTrigger ("attack");
+		}
+		nav.isStopped = true;
+		walking = false;
 	}
 
 	protected override void Die ()
 	{
-		
+		anim.SetTrigger ("dead");
+	}
+
+	void OnDrawGizmos(){
+		Handles.color = Color.yellow;
+		Handles.DrawWireArc (transform.position+new Vector3(0,0.2f,0), transform.up, transform.right, 360, lookRadius);
+		Handles.color = Color.red;
+		Handles.DrawWireArc (transform.position+new Vector3(0,0.2f,0), transform.up, transform.right, 360, attackRadius);
 	}
 }
