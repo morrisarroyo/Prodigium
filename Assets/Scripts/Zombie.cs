@@ -47,6 +47,8 @@ public class Zombie : BaseCreature {
 		if (!anim.GetCurrentAnimatorStateInfo(0).IsName("riseFromTheGroundNormal")){
 			if (distance <= lookRadius) {
 				Move ();
+			} else {
+				walking = false;
 			}
 		} else {
 			
