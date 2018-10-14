@@ -42,22 +42,21 @@ public class FlameAttack : DragonAttack
 
     public override void Do()
     {
-
-
         if (!IsDone())
         {
             IsDoing = true;
             TriggerAttackAnimation();
         }
     }
+
     private void TriggerAttackAnimation()
     {
         if (IsDoing)
         {
-
             if (IsDone())
             {
                 IsDoing = false;
+                currentRepeatCount = repeatCount;
             }
             else
             {

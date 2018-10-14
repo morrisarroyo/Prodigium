@@ -18,12 +18,13 @@ public class Dragon : BaseCreature
     //public float movementSpeed = 6f;
     public float rotationSpeed = 3f;
     public float climbHeight = 5f;
+    public GameObject player;
 
     bool isAttacking = false;
+    bool isAlive = true;
     string previousAnimationName = "";
     List<IDragonAction> actions;
-    IDragonAction currentAction;
-    public GameObject player;
+
     Rigidbody rb;
     Animator anim;
 
@@ -34,27 +35,54 @@ public class Dragon : BaseCreature
         anim = GetComponent<Animator>();
 
         player = GetPlayerToTrack();
-        actions = new List<IDragonAction>() { gameObject.GetComponent<DragonWalk>(), gameObject.GetComponent<DragonRun>(), gameObject.GetComponent<FlameAttack>() };
-        currentAction = actions[0];
+        actions = new List<IDragonAction>() {
+            gameObject.GetComponent<DragonWalk>()
+            , gameObject.GetComponent<BasicAttack>()
+            , gameObject.GetComponent<DragonRun>()
+            , gameObject.GetComponent<FlameAttack>() };
+        health = 1000;
     }
 
 
     void Start()
     {
-        //gameObject.GetComponent<FlameAttack>().Do();
+        //gameObject.GetComponent<BasicAttack>().Do();
+
     }
     // Update is called once per frame
     void Update()
     {
-        Do();
+        if (health > 0)
+        {
+            Do();
+        }
+        else
+        {
+            Die();
+        }
 
         //Climb();
     }
 
+    protected override void Die()
+    {
+        if (isAlive)
+        {
+            anim.SetTrigger("Die");
+            isAlive = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Weapon"))
+        {
+            TakeDamage(1000);
+        }
+    }
+
     public void Do()
     {
-
-        currentAction = actions[0];
         if (actions[0] is DragonAttack)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
@@ -70,6 +98,7 @@ public class Dragon : BaseCreature
             {
                 previousAnimationName = actions[0].Name;
                 actions.RemoveAt(0);
+                isAttacking = false;
             }
 
         }
@@ -86,8 +115,12 @@ public class Dragon : BaseCreature
         }
         if (actions.Count == 0)
         {
-            actions.Insert(0, gameObject.GetComponent<DragonRun>());
-            actions.Insert(0, gameObject.GetComponent<DragonWalk>());
+
+            actions.Add(gameObject.GetComponent<DragonWalk>());
+            actions.Add(gameObject.GetComponent<BasicAttack>());
+            actions.Add(gameObject.GetComponent<DragonRun>());
+            actions.Add(gameObject.GetComponent<FlameAttack>());
+
         }
     }
 
@@ -118,6 +151,8 @@ public class Dragon : BaseCreature
     protected override void BasicAttack()
     {
     }
+
+
 
     /*
     private bool CanAttack()
@@ -250,10 +285,6 @@ public class Dragon : BaseCreature
         return player;
     }
 
-    protected override void Die()
-    {
-        throw new System.NotImplementedException();
-    }
 
     protected override void Move()
     {

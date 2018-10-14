@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0731ade686f406047aa78d2789b0a6d7
-timeCreated: 1465405093
+guid: a9493692897c890428a0f93e0993d4d5
+timeCreated: 1465405099
 licenseType: Store
 ModelImporter:
   serializedVersion: 19
@@ -213,7 +213,7 @@ ModelImporter:
     400202: MOUNTAIN_DRAGON_WING_R_FINGER_D_3
     400204: MOUNTAIN_DRAGON_WING_R_FOREARM
     400206: MOUNTAIN_DRAGON_WING_R_HAND
-    7400000: ClawsAttack2HitComboForward
+    7400000: run
     9500000: //RootNode
     11100000: //RootNode
   materials:
@@ -240,17 +240,17 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: ClawsAttack2HitComboForward
+      name: run
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 75
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
@@ -262,15 +262,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 1
-        functionName: TriggerAttackAnimation
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 2c173382c8465eb498e5d88d44234c53,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1

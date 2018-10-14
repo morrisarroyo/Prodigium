@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DragonRun : MonoBehaviour, IDragonAction
 {
     Animator anim;
     GameObject player;
     Transform target;
+    NavMeshAgent nav;
+    bool runTowards = false;
+    float distance = 12f;
 
     const string isRunningStr = "IsRunning";
     public float movementSpeed = 12f;
     public float rotationSpeed = 3f;
     public Dragon dragon;
-    public bool runTowards = false;
-    public float distance = 12f;
 
     public string Name
     {
@@ -35,6 +37,7 @@ public class DragonRun : MonoBehaviour, IDragonAction
     {
         dragon = gameObject.GetComponent<Dragon>();
         anim = gameObject.GetComponent<Animator>();
+        nav = gameObject.GetComponent<NavMeshAgent>();
         player = dragon.player;
         target = player.transform;
         IsDoing = false;
@@ -79,6 +82,8 @@ public class DragonRun : MonoBehaviour, IDragonAction
             else
             {
                 IsDoing = false;
+                nav.velocity = Vector3.zero;
+                nav.isStopped = true;
                 StopMovementAnimation();
             }
         }
@@ -93,7 +98,7 @@ public class DragonRun : MonoBehaviour, IDragonAction
         }
         else
         {
-            transform.Rotate(0, 180, 0);
+            //transform.Rotate(0, 180, 0);
             return Vector3.Distance(transform.position, player.transform.position) >= distance;
         }
     }
@@ -127,6 +132,16 @@ public class DragonRun : MonoBehaviour, IDragonAction
     private void RunAway()
     {
 
+        Vector3 runTo = transform.position + ((transform.position - player.transform.position));
+        float dist = Vector3.Distance(transform.position, player.transform.position);
+        if (dist < distance)
+        {
+            nav.destination = runTo;
+            nav.speed = movementSpeed;
+            nav.isStopped = false;
+        }
+
+        /*
         //if (Vector3.Distance(transform.position, target.position) < distance)
         //{
         transform.LookAt(target);
@@ -138,7 +153,7 @@ public class DragonRun : MonoBehaviour, IDragonAction
         //targetDir.z = -targetDir.z;
         //Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotationSpeed * Time.deltaTime, 0f);
         //transform.rotation = Quaternion.LookRotation(newDir);
-
+        */
         StartMovementAnimation();
         //}
     }
