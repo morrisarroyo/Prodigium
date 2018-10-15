@@ -93,6 +93,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+    <Compile Include="Assets\Flame.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -140,7 +146,14 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\Characters\BaseCreature.cs" />
     <Compile Include="Assets\Scripts\Characters\CharacterAnimator.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Dragon.cs" />
+    <Compile Include="Assets\Scripts\DragonScripts\BasicAttack.cs" />
+    <Compile Include="Assets\Scripts\DragonScripts\BasicMovement.cs" />
+    <Compile Include="Assets\Scripts\DragonScripts\Dragon.cs" />
+    <Compile Include="Assets\Scripts\DragonScripts\DragonAttack.cs" />
+    <Compile Include="Assets\Scripts\DragonScripts\DragonRun.cs" />
+    <Compile Include="Assets\Scripts\DragonScripts\DragonWalk.cs" />
+    <Compile Include="Assets\Scripts\DragonScripts\FlameAttack.cs" />
+    <Compile Include="Assets\Scripts\DragonScripts\IDragonAction.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyInteractable.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Enemies\ZombieBase.cs" />
@@ -173,6 +186,7 @@
     <Compile Include="Assets\StoreAssets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />

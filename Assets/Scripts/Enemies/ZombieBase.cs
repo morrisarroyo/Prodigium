@@ -8,13 +8,14 @@ using UnityEditor;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class ZombieBase : BaseCreature {
+public class ZombieBase : BaseCreature
+{
 
-	public int health = 100;
-	public int basicAttackDamage = 10;
-	public int movementSpeed = 1;
+    public int healthValue = 100;
+    public int basicAttackDamageValue = 10;
+    public int movementSpeedValue = 5;
 
-	Transform target;
+    Transform target;
 	Animator anim;
 	NavMeshAgent nav;
 
@@ -26,8 +27,11 @@ public class ZombieBase : BaseCreature {
 
 	// Use this for initialization
 	void Awake ()
-	{
-		target = GameObject.FindGameObjectWithTag ("Player").transform;
+    {
+        health = healthValue;
+        basicAttackDamage = basicAttackDamageValue;
+        movementSpeed = movementSpeedValue;
+        target = GameObject.FindGameObjectWithTag ("Player").transform;
 		nav = GetComponent<NavMeshAgent> ();
 		anim = GetComponent<Animator> ();
         transform.rotation = Random.rotation;
@@ -63,7 +67,8 @@ public class ZombieBase : BaseCreature {
         Debug.Log(health);
         if (health <= 0)
             Die();
-        anim.SetTrigger ("attacked");
+        else
+            anim.SetTrigger ("attacked");
 	}
 
 	public override void BasicAttack()

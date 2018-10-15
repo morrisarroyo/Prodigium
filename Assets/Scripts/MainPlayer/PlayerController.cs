@@ -6,9 +6,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : BaseCreature {
 
-    public new int health = 100;
-    public new int basicAttackDamage = 10;
-    public new int movementSpeed = 5;
+    public int healthValue = 100;
+    public int basicAttackDamageValue = 10;
+    public int movementSpeedValue = 5;
 
     // Used to set focus
     public Interactable focus;
@@ -30,6 +30,9 @@ public class PlayerController : BaseCreature {
 
     // Use this for initialization
     void Start() {
+        health = healthValue;
+        basicAttackDamage = basicAttackDamageValue;
+        movementSpeed = movementSpeedValue;
         cam = Camera.main;
         motor = GetComponent<PlayerMotor>();
         combat = GetComponent<Combat>();

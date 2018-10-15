@@ -64,7 +64,7 @@ public class Dragon : BaseCreature
         //Climb();
     }
 
-    protected override void Die()
+    public override void Die()
     {
         if (isAlive)
         {
@@ -148,7 +148,7 @@ public class Dragon : BaseCreature
             transform.rotation = Quaternion.LookRotation(newDir);
         }
     }
-    protected override void BasicAttack()
+    public override void BasicAttack()
     {
     }
 
@@ -286,8 +286,15 @@ public class Dragon : BaseCreature
     }
 
 
-    protected override void Move()
+    public override void Move()
     {
         throw new System.NotImplementedException();
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        health = health - damage;
+        if (health <= 0)
+            Die();
     }
 }
