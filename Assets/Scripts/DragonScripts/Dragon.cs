@@ -14,12 +14,14 @@ public class Dragon : BaseCreature
 
     //public int health;
     //public int basicAttackDamage;
-    public float flyingSpeed = 2f;
+    //public float flyingSpeed = 2f;
     //public float movementSpeed = 6f;
     public float rotationSpeed = 3f;
-    public float climbHeight = 5f;
+    public float wakeDistance = 7f;
+    //public float climbHeight = 5f;
     public GameObject player;
 
+    bool isAwake = false;
     bool isAttacking = false;
     bool isAlive = true;
     string previousAnimationName = "";
@@ -47,20 +49,30 @@ public class Dragon : BaseCreature
     void Start()
     {
         //gameObject.GetComponent<BasicAttack>().Do();
-
+        anim.SetBool("IsWaiting", true);
     }
     // Update is called once per frame
     void Update()
     {
-        if (health > 0)
+        if (isAwake)
         {
-            Do();
+            if (health > 0)
+            {
+                Do();
+            }
+            else
+            {
+                Die();
+            }
         }
         else
         {
-            Die();
+            if (Vector3.Distance(transform.position, player.transform.position) < wakeDistance)
+            {
+                anim.SetBool("IsWaiting", false);
+                isAwake = true;
+            }
         }
-
         //Climb();
     }
 
