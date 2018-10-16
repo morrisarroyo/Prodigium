@@ -113,8 +113,11 @@ public class PlayerController : BaseCreature {
 
     public override void BasicAttack()
     {
-        anim.SetTrigger("attack");
-        combat.basicAttack(focus.GetComponent<BaseCreature>(), basicAttackDamage);
+        if (!anim.GetBool("attacking"))
+        {
+            combat.basicAttack(focus.GetComponent<BaseCreature>(), basicAttackDamage);
+            anim.SetTrigger("attack");
+        }
     }
 
     public override void Die()
