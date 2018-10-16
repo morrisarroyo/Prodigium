@@ -10,10 +10,11 @@ using UnityEditor;
 
 public class ZombieBase : BaseCreature
 {
-
     public int healthValue = 100;
     public int basicAttackDamageValue = 10;
     public int movementSpeedValue = 5;
+    public bool destroyOnDeath;
+    private bool isSinking;
 
     Transform target;
 	Animator anim;
@@ -44,12 +45,20 @@ public class ZombieBase : BaseCreature
 	{
 		float distance = Vector3.Distance (transform.position, target.position);
 		if (!anim.GetCurrentAnimatorStateInfo(0).IsName("riseFromTheGroundNormal")){
-			if (distance <= lookRadius) {
-				Move ();
-                if(distance <= attackRadius){
-
+            if (!isSinking)
+            {
+                if (distance <= lookRadius)
+                {
+                    Move();
+                    if (distance <= attackRadius)
+                    {
+                        BasicAttack();
+                    }
                 }
-			}
+            } else
+            {
+                transform.Translate(-Vector3.up * .1f * Time.deltaTime);
+            }
 		}
 	}
 		
@@ -84,7 +93,15 @@ public class ZombieBase : BaseCreature
 	public override void Die ()
 	{
 		anim.SetTrigger ("dead");
-        Destroy(this.gameObject, 1f);
+        isSinking = true;
+        GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<CapsuleCollider>().isTrigger = true;
+        GetComponent<EnemyInteractable>().enabled = false;
+        if (destroyOnDeath)
+        {
+            Destroy(this.gameObject, 3f);
+        }
 	}
 
 	void OnDrawGizmos(){

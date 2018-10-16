@@ -144,6 +144,7 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\RandomAnimBehaviour.cs" />
     <Compile Include="Assets\Scripts\Characters\BaseCreature.cs" />
     <Compile Include="Assets\Scripts\Characters\CharacterAnimator.cs" />
     <Compile Include="Assets\Scripts\DragonScripts\BasicAttack.cs" />
