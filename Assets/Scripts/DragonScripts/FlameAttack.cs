@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class FlameAttack : DragonAttack
 {
-
     Animator anim;
     GameObject player;
+
+    int currentRepeatCount;
+
 
     // Use this for initialization
     void Start()
@@ -14,8 +16,8 @@ public class FlameAttack : DragonAttack
         IsDoing = false;
         repeatCount = 3; // -1
         currentRepeatCount = repeatCount;
-        minTriggerRange = 10f;
-        maxTriggerRange = 15f;
+        //minTriggerRange = 10f;
+        //maxTriggerRange = 15f;
     }
 
 

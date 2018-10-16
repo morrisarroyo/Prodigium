@@ -8,9 +8,8 @@ public abstract class DragonAttack : MonoBehaviour, IDragonAction
 
 
     public int repeatCount;
-    public int currentRepeatCount;
-    public float minTriggerRange;
-    public float maxTriggerRange;
+    //public float minTriggerRange;
+    //public float maxTriggerRange;
 
 
     public abstract bool IsDoing { get; set; }

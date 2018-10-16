@@ -5,6 +5,8 @@ public class BasicAttack : DragonAttack
     Animator anim;
     GameObject player;
 
+    int currentRepeatCount;
+
     public override string Name
     {
         get
@@ -27,8 +29,8 @@ public class BasicAttack : DragonAttack
         IsDoing = false;
         repeatCount = 3; // -1
         currentRepeatCount = repeatCount;
-        minTriggerRange = 1f;
-        maxTriggerRange = 3f;
+        //minTriggerRange = 1f;
+        //maxTriggerRange = 3f;
     }
 
 
