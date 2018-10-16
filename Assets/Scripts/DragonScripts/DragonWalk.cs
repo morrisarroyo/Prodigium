@@ -10,7 +10,7 @@ public class DragonWalk : MonoBehaviour, IDragonAction
     Transform target;
     NavMeshAgent nav;
     bool walkTowards = true;
-    float distance = 2f;
+    public float distance = 8f;
 
     const string isWalkingStr = "IsWalking";
     public float movementSpeed = 6f;

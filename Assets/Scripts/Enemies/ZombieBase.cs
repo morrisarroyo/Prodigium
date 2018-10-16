@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEditor;
+
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -104,10 +104,12 @@ public class ZombieBase : BaseCreature
         }
 	}
 
+    /*
 	void OnDrawGizmos(){
 		Handles.color = Color.yellow;
 		Handles.DrawWireArc (transform.position+new Vector3(0,0.2f,0), transform.up, transform.right, 360, lookRadius);
 		Handles.color = Color.red;
 		Handles.DrawWireArc (transform.position+new Vector3(0,0.2f,0), transform.up, transform.right, 360, attackRadius);
 	}
+    */
 }

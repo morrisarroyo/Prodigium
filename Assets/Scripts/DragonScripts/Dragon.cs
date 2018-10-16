@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Dragon : BaseCreature
 {
@@ -29,12 +30,13 @@ public class Dragon : BaseCreature
 
     Rigidbody rb;
     Animator anim;
-
+    NavMeshAgent nav;
     // Use this for initialization
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        nav = GetComponent<NavMeshAgent>();
 
         player = GetPlayerToTrack();
         actions = new List<IDragonAction>() {
@@ -42,7 +44,7 @@ public class Dragon : BaseCreature
             , gameObject.GetComponent<BasicAttack>()
             , gameObject.GetComponent<DragonRun>()
             , gameObject.GetComponent<FlameAttack>() };
-        health = 1000;
+        health = 200;
     }
 
 
@@ -82,6 +84,7 @@ public class Dragon : BaseCreature
         {
             anim.SetTrigger("Die");
             isAlive = false;
+            nav.isStopped = true;
         }
     }
 
@@ -306,6 +309,7 @@ public class Dragon : BaseCreature
     public override void TakeDamage(int damage)
     {
         health = health - damage;
+        Debug.Log(health);
         if (health <= 0)
             Die();
     }
