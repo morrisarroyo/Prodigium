@@ -116,9 +116,17 @@ public class DragonRun : MonoBehaviour, IDragonAction
 
     private void RunTowards()
     {
-
+        nav.destination = target.position;
+        nav.speed = movementSpeed;
+        if (!nav.pathPending && nav.remainingDistance > distance)
+        {
+            nav.isStopped = false;
+            StartMovementAnimation();
+            //walking = true;
+        }
         //if (Vector3.Distance(transform.position, target.position))
         //{
+        /*
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
 
         StartMovementAnimation();
@@ -127,6 +135,7 @@ public class DragonRun : MonoBehaviour, IDragonAction
         Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotationSpeed * Time.deltaTime, 0f);
         transform.rotation = Quaternion.LookRotation(newDir);
         //}
+        */
     }
 
     private void RunAway()
