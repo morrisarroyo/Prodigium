@@ -39,11 +39,16 @@ public class Dragon : BaseCreature
         nav = GetComponent<NavMeshAgent>();
 
         player = GetPlayerToTrack();
-        actions = new List<IDragonAction>() {
+        actions = new List<IDragonAction>()
+        {
+            gameObject.GetComponent<DragonFly>()
+            /*
             gameObject.GetComponent<DragonWalk>()
             , gameObject.GetComponent<BasicAttack>()
             , gameObject.GetComponent<DragonRun>()
-            , gameObject.GetComponent<FlameAttack>() };
+            , gameObject.GetComponent<FlameAttack>()
+            */
+        };
         health = 200;
     }
 

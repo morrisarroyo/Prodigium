@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prodigium", "Prodigium.csproj", "{88EFD936-67CC-F72C-B262-494A3A26CDD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prodigium.Editor", "Prodigium.Editor.csproj", "{14DDBBEC-243F-9C51-1899-4F8645D78DC5}"
