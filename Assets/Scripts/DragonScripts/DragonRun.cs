@@ -15,7 +15,7 @@ public class DragonRun : MonoBehaviour, IDragonAction
     const string isRunningStr = "IsRunning";
     public float movementSpeed = 12f;
     public float rotationSpeed = 3f;
-    public Dragon dragon;
+    Dragon dragon;
 
     public string Name
     {

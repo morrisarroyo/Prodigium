@@ -263,10 +263,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.24508743
+      - time: 0.2469565
         functionName: Climb
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e83f65bba55d1434488a2fa7817e0d2d,
+        objectReferenceParameter: {fileID: 11500000, guid: d5a6d9dcf2207684a880178d886bae00,
           type: 3}
         floatParameter: 0
         intParameter: 0

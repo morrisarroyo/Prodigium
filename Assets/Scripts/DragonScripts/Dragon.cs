@@ -37,8 +37,10 @@ public class Dragon : BaseCreature
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
-
-        player = GetPlayerToTrack();
+        if (player.Equals(null))
+        {
+            player = GetPlayerToTrack();
+        }
         actions = new List<IDragonAction>()
         {
             gameObject.GetComponent<DragonFly>()

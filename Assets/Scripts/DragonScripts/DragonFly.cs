@@ -8,16 +8,18 @@ using UnityEngine.AI;
 public class DragonFly : MonoBehaviour, IDragonAction
 {
     Animator anim;
-    GameObject player;
     Transform target;
     NavMeshAgent nav;
-    public float distance = 8f;
-    public Vector3 destination;
+    public float distance = 15f;
+    //public Vector3 destination;
 
     const string isFlyingStr = "IsFlying";
     public float movementSpeed = 3f;
+    public float climbSpeed = 2f;
     //public float rotationSpeed = 3f;
-    public Dragon dragon;
+    Dragon dragon;
+    public Transform defaultTarget;
+    bool isFlying;
 
     public string Name
     {
@@ -40,16 +42,15 @@ public class DragonFly : MonoBehaviour, IDragonAction
         dragon = gameObject.GetComponent<Dragon>();
         anim = gameObject.GetComponent<Animator>();
         nav = gameObject.GetComponent<NavMeshAgent>();
-        player = dragon.player;
-        target = player.transform;
-        destination = transform.position + (Vector3.up * 10);
+        target = defaultTarget;
+        //destination = transform.position + (Vector3.up * 10);
         IsDoing = false;
+        isFlying = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        player = dragon.player;
     }
 
     public void Set(bool towards, float dist)
@@ -64,44 +65,57 @@ public class DragonFly : MonoBehaviour, IDragonAction
 
     public void Do()
     {
-        if (player != null)
-        {
-            // The step size is equal to speed times frame time.
+        // The step size is equal to speed times frame time.
 
-            // Move our position a step closer to the target.
-            if (!IsDone())
-            {
-                IsDoing = true;
-                Fly();
-            }
-            else
-            {
-                IsDoing = false;
-                StopMovementAnimation();
-            }
+        // Move our position a step closer to the target.
+        if (!IsDone())
+        {
+            IsDoing = true;
+            StartMovementAnimation();
+            Fly();
+            nav.enabled = false;
+        }
+        else
+        {
+            nav.enabled = true;
+            IsDoing = false;
+            isFlying = false;
+            StopMovementAnimation();
         }
     }
 
 
     public bool IsDone()
     {
-        /*
-        if (true)
+
+        if (transform.position.y >= distance)
         {
-            return Vector3.Distance(transform.position, player.transform.position) <= distance;
+            return true;
         }
-        */
         return false;
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
     }
 
     private void Fly()
     {
-        //transform.position = Vector3.MoveTowards(transform.position, destination, movementSpeed * Time.deltaTime);
-        transform.position = transform.position + (Vector3.up * 3);
-        nav.isStopped = true;
-        StartMovementAnimation();
+        if (isFlying)
+        {
+            //transform.position = Vector3.MoveTowards(transform.position, destination, movementSpeed * Time.deltaTime);
+            //Vector3 destination = transform.position + (Vector3.up * distance);
+            Debug.Log(transform.position);
+            transform.Translate(Vector3.up * climbSpeed * Time.deltaTime);
+            //nav.isStopped = true;
+        }
     }
 
+    private void Climb()
+    {
+        isFlying = true;
+    }
     private void StartMovementAnimation()
     {
         anim.SetBool(isFlyingStr, true);
