@@ -15,6 +15,7 @@ public class PlayerController : BaseCreature {
 
     // Used to specify a layer
     public LayerMask movementMask;
+    public bool dead;
 
     // Camera variable
     Camera cam;
@@ -30,6 +31,7 @@ public class PlayerController : BaseCreature {
 
     // Use this for initialization
     void Start() {
+        dead = false;
         health = healthValue;
         basicAttackDamage = basicAttackDamageValue;
         movementSpeed = movementSpeedValue;
@@ -43,7 +45,8 @@ public class PlayerController : BaseCreature {
 
     // Update is called once per frame
     void Update() {
-        Move();
+        if (!dead)
+            Move();
     }
 
     // Sets focus to interactable
@@ -115,18 +118,23 @@ public class PlayerController : BaseCreature {
     {
         if (!anim.GetBool("attacking"))
         {
-            combat.basicAttack(focus.GetComponent<BaseCreature>(), basicAttackDamage);
+            combat.dealDamage(focus.GetComponent<BaseCreature>(), basicAttackDamage);
             anim.SetTrigger("attack");
         }
     }
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        dead = true;
+        anim.SetTrigger("dead");
+        GetComponent<NavMeshAgent>().enabled = false;
     }
 
     public override void TakeDamage(int damage)
     {
-        throw new System.NotImplementedException();
+        health = health - damage;
+        Debug.Log(health);
+        if (health <= 0)
+            Die();
     }
 }
