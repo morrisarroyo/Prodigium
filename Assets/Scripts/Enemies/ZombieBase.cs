@@ -16,9 +16,11 @@ public class ZombieBase : BaseCreature
     public bool destroyOnDeath;
     private bool isSinking;
 
+	GameObject player;
     Transform target;
 	Animator anim;
 	NavMeshAgent nav;
+	Combat combat;
 
 	public float lookRadius;
 	public float attackRadius;
@@ -32,10 +34,12 @@ public class ZombieBase : BaseCreature
         health = healthValue;
         basicAttackDamage = basicAttackDamageValue;
         movementSpeed = movementSpeedValue;
-        target = GameObject.FindGameObjectWithTag ("Player").transform;
+		player = GameObject.FindGameObjectWithTag ("Player");
+        target = player.transform;
 		nav = GetComponent<NavMeshAgent> ();
 		anim = GetComponent<Animator> ();
         transform.rotation = Random.rotation;
+		combat = GetComponent<Combat> ();
         nav.speed = Random.Range((float)(movementSpeed - movementSpeed * .2), (float)(movementSpeed + movementSpeed * .2));
 		Physics.OverlapSphere (transform.position, 5f);
 	}
@@ -45,19 +49,17 @@ public class ZombieBase : BaseCreature
 	{
 		float distance = Vector3.Distance (transform.position, target.position);
 		if (!anim.GetCurrentAnimatorStateInfo(0).IsName("riseFromTheGroundNormal")){
-            if (!isSinking)
-            {
-                if (distance <= lookRadius)
-                {
-                    Move();
-                    if (distance <= attackRadius)
-                    {
-                        BasicAttack();
+            if (!player.GetComponent<PlayerController>().dead) {
+                if (!isSinking) {
+                    if (distance <= lookRadius) {
+                        Move();
+                        if (distance <= attackRadius) {
+                            BasicAttack();
+                        }
                     }
+                } else {
+                    transform.Translate(-Vector3.up * .1f * Time.deltaTime);
                 }
-            } else
-            {
-                transform.Translate(-Vector3.up * .1f * Time.deltaTime);
             }
 		}
 	}
@@ -73,7 +75,6 @@ public class ZombieBase : BaseCreature
 	public override void TakeDamage(int damage)
     {
         health = health - damage;
-        Debug.Log(health);
         if (health <= 0)
             Die();
         else
@@ -86,6 +87,7 @@ public class ZombieBase : BaseCreature
 		if (Time.time > nextAttack) {
 			nextAttack = Time.time + attackSpeed;
 			anim.SetTrigger ("attack");
+			combat.dealDamage(player.GetComponent<BaseCreature>(), basicAttackDamage);
 		}
 		nav.isStopped = true;
 	}
