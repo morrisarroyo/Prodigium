@@ -263,6 +263,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.24759145
+        functionName: DealDamage
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c173382c8465eb498e5d88d44234c53,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.66788954
+        functionName: DealDamage
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c173382c8465eb498e5d88d44234c53,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 1
         functionName: TriggerAttackAnimation
         data: 

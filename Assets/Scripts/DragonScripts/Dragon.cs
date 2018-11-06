@@ -43,13 +43,13 @@ public class Dragon : BaseCreature
         }
         actions = new List<IDragonAction>()
         {
-            gameObject.GetComponent<DragonFly>()
-            /*
+            //gameObject.GetComponent<DragonFly>()
+            
             gameObject.GetComponent<DragonWalk>()
             , gameObject.GetComponent<BasicAttack>()
-            , gameObject.GetComponent<DragonRun>()
-            , gameObject.GetComponent<FlameAttack>()
-            */
+            //, gameObject.GetComponent<DragonRun>()
+            //, gameObject.GetComponent<FlameAttack>()
+            //*/
         };
         health = 200;
     }
