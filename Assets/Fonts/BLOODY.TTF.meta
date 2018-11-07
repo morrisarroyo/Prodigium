@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a262bc2519de1ed42a2be44b4c0e8f28
+timeCreated: 1541548309
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bloody
+  fontNames:
+  - Bloody
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
