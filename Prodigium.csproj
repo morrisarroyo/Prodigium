@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Assets\Flame.cs" />
     <Compile Include="Assets\FlameCollision.cs" />
+    <Compile Include="Assets\Health\ScrollingRawImage.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
