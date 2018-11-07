@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(PlayerMotor))]
-public class PlayerController : BaseCreature {
+public class PlayerController : BaseCreature
+{
 
     public int healthValue = 100;
     public int basicAttackDamageValue = 10;
@@ -30,7 +31,8 @@ public class PlayerController : BaseCreature {
     NavMeshAgent nav;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         dead = false;
         health = healthValue;
         basicAttackDamage = basicAttackDamageValue;
@@ -44,15 +46,18 @@ public class PlayerController : BaseCreature {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         if (!dead)
             Move();
     }
 
     // Sets focus to interactable
-    void SetFocus (Interactable newFocus) {
+    void SetFocus(Interactable newFocus)
+    {
         // If focus is already set then defocus that first
-        if (newFocus != focus) {
+        if (newFocus != focus)
+        {
             if (focus != null)
                 focus.onDefocused();
 
@@ -64,8 +69,10 @@ public class PlayerController : BaseCreature {
     }
 
     // Removes focus from interactable
-    void RemoveFocus () {
-        if (focus != null) {
+    void RemoveFocus()
+    {
+        if (focus != null)
+        {
             focus.onDefocused();
         }
 
