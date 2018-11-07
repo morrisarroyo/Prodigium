@@ -37,13 +37,20 @@ public class Dragon : BaseCreature
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
-
-        player = GetPlayerToTrack();
-        actions = new List<IDragonAction>() {
+        if (player.Equals(null))
+        {
+            player = GetPlayerToTrack();
+        }
+        actions = new List<IDragonAction>()
+        {
+            gameObject.GetComponent<DragonFly>()
+            /*
             gameObject.GetComponent<DragonWalk>()
             , gameObject.GetComponent<BasicAttack>()
             , gameObject.GetComponent<DragonRun>()
-            , gameObject.GetComponent<FlameAttack>() };
+            , gameObject.GetComponent<FlameAttack>()
+            */
+        };
         health = 200;
     }
 

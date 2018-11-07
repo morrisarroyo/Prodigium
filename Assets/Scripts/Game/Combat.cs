@@ -12,7 +12,7 @@ public class Combat : MonoBehaviour {
         creature = GetComponent<BaseCreature>();
     }
 
-    public void basicAttack(BaseCreature c, int damage) {
+    public void dealDamage(BaseCreature c, int damage) {
         c.TakeDamage(damage);
     }
 }
