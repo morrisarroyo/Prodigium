@@ -14,12 +14,14 @@ public class DragonFly : MonoBehaviour, IDragonAction
     //public Vector3 destination;
 
     const string isFlyingStr = "IsFlying";
+    const string isDescendingStr = "IsDescending";
     public float movementSpeed = 3f;
     public float climbSpeed = 2f;
     //public float rotationSpeed = 3f;
     Dragon dragon;
     public Transform defaultTarget;
     bool isFlying;
+    bool isDescending;
 
     public string Name
     {
@@ -46,6 +48,7 @@ public class DragonFly : MonoBehaviour, IDragonAction
         //destination = transform.position + (Vector3.up * 10);
         IsDoing = false;
         isFlying = false;
+        isDescending = false;
     }
 
     // Update is called once per frame
@@ -71,21 +74,55 @@ public class DragonFly : MonoBehaviour, IDragonAction
         if (!IsDone())
         {
             IsDoing = true;
-            StartMovementAnimation();
             Fly();
+            if (IsDoneClimbing())
+            {
+                isFlying = false;
+                StopClimbingAnimation();
+                Descend();
+            }
+            else
+            {
+
+                StartClimbingAnimation();
+            }
             nav.enabled = false;
         }
         else
         {
+            StopDescendingAnimation();
+            StopClimbingAnimation();
+            transform.position = target.position;
+
             nav.enabled = true;
             IsDoing = false;
             isFlying = false;
-            StopMovementAnimation();
+            isDescending = false;
         }
     }
 
+    private bool IsDoneDescending()
+    {
+        if (transform.position.y <= target.position.y)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public bool IsDone()
+    {
+
+        if (Math.Abs(transform.position.x - target.position.x) <= 1
+            && Math.Abs(transform.position.z - target.position.z) <= 1
+            && transform.position.y <= target.position.y)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsDoneClimbing()
     {
 
         if (transform.position.y >= distance)
@@ -104,25 +141,57 @@ public class DragonFly : MonoBehaviour, IDragonAction
     {
         if (isFlying)
         {
+
             //transform.position = Vector3.MoveTowards(transform.position, destination, movementSpeed * Time.deltaTime);
             //Vector3 destination = transform.position + (Vector3.up * distance);
             Debug.Log(transform.position);
             transform.Translate(Vector3.up * climbSpeed * Time.deltaTime);
             //nav.isStopped = true;
         }
+        else if (isDescending)
+        {
+            StopClimbingAnimation();
+            StartDescendingAnimation();
+            Debug.Log(transform.position);
+            transform.Translate(Vector3.down * climbSpeed * Time.deltaTime);
+        }
+    }
+
+
+    private void Descend()
+    {
+        if (!isDescending)
+        {
+            Vector3 newLocation = target.transform.position;
+            newLocation.y += distance;
+            transform.position = newLocation;
+        }
+        isDescending = true;
     }
 
     private void Climb()
     {
         isFlying = true;
     }
-    private void StartMovementAnimation()
+    private void StartClimbingAnimation()
     {
         anim.SetBool(isFlyingStr, true);
     }
 
-    private void StopMovementAnimation()
+    private void StopClimbingAnimation()
     {
         anim.SetBool(isFlyingStr, false);
+    }
+    private void StartDescendingAnimation()
+    {
+        if (transform.position.y <= 2)
+        {
+            anim.SetBool(isDescendingStr, true);
+        }
+    }
+
+    private void StopDescendingAnimation()
+    {
+        anim.SetBool(isDescendingStr, false);
     }
 }
