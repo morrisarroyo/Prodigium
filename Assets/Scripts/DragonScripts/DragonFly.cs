@@ -20,9 +20,10 @@ public class DragonFly : MonoBehaviour, IDragonAction
     //public float rotationSpeed = 3f;
     Dragon dragon;
     public Transform defaultTarget;
+    public List<Transform> targets;
     bool isFlying;
     bool isDescending;
-
+    private int randomIndex = 0;
     public string Name
     {
         get
@@ -45,10 +46,12 @@ public class DragonFly : MonoBehaviour, IDragonAction
         anim = gameObject.GetComponent<Animator>();
         nav = gameObject.GetComponent<NavMeshAgent>();
         target = defaultTarget;
+        targets.Add(defaultTarget);
         //destination = transform.position + (Vector3.up * 10);
         IsDoing = false;
         isFlying = false;
         isDescending = false;
+        RandomizeTarget();
     }
 
     // Update is called once per frame
@@ -98,16 +101,18 @@ public class DragonFly : MonoBehaviour, IDragonAction
             IsDoing = false;
             isFlying = false;
             isDescending = false;
+            RandomizeTarget();
         }
     }
 
-    private bool IsDoneDescending()
+    private void RandomizeTarget()
     {
-        if (transform.position.y <= target.position.y)
+        int rand = 0;
+        do
         {
-            return true;
-        }
-        return false;
+            rand = UnityEngine.Random.Range(0, targets.Count);
+        } while (randomIndex == rand);
+        target = targets[rand];
     }
 
     public bool IsDone()
