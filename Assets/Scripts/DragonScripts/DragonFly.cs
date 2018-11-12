@@ -149,7 +149,7 @@ public class DragonFly : MonoBehaviour, IDragonAction
 
             //transform.position = Vector3.MoveTowards(transform.position, destination, movementSpeed * Time.deltaTime);
             //Vector3 destination = transform.position + (Vector3.up * distance);
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
             transform.Translate(Vector3.up * climbSpeed * Time.deltaTime);
             //nav.isStopped = true;
         }
@@ -157,7 +157,7 @@ public class DragonFly : MonoBehaviour, IDragonAction
         {
             StopClimbingAnimation();
             StartDescendingAnimation();
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
             transform.Translate(Vector3.down * climbSpeed * Time.deltaTime);
         }
     }

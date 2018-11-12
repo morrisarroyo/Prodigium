@@ -119,6 +119,13 @@ public class PlayerController : BaseCreature
                 }
             }
         }
+
+
+        /* PS4 Controls */
+        Input.GetAxis("Vertical"); // Left Stick Y Axis
+        Input.GetAxis("Horizontal"); // Left Stick X Axis
+        Input.GetAxis("PS4RightStickX"); // Right Stick Y Axis
+        Input.GetAxis("PS4RightStickY"); // Right Stick X Axis
     }
 
     public override void BasicAttack()
