@@ -5,7 +5,6 @@ using UnityEngine;
 public class Flame : MonoBehaviour
 {
     public ParticleSystem flameParticle;
-    public List<ParticleCollisionEvent> collisionEvents;
 
     private void Start()
     {
