@@ -2,10 +2,14 @@
 
 public class BasicAttack : DragonAttack
 {
+    public int attackDamage = 10;
+    Combat combat;
     Animator anim;
     GameObject player;
+    Dragon dragon;
 
     int currentRepeatCount;
+    bool playerInRange;
 
     public override string Name
     {
@@ -26,9 +30,13 @@ public class BasicAttack : DragonAttack
     void Start()
     {
         anim = GetComponent<Animator>();
+        dragon = GetComponent<Dragon>();
+        combat = GetComponent<Combat>();
         IsDoing = false;
         repeatCount = 3; // -1
         currentRepeatCount = repeatCount;
+        playerInRange = false;
+        player = dragon.player;
         //minTriggerRange = 1f;
         //maxTriggerRange = 3f;
     }
@@ -39,6 +47,7 @@ public class BasicAttack : DragonAttack
     void Update()
     {
 
+        player = dragon.player;
     }
 
     public override void Do()
@@ -75,6 +84,33 @@ public class BasicAttack : DragonAttack
             }
 
             --currentRepeatCount;
+        }
+    }
+
+    public void DealDamage()
+    {
+        if (playerInRange)
+        {
+            combat.dealDamage(player.GetComponent<PlayerController>(), attackDamage);
+            Debug.Log("Dealt Basic Attack Damage (" + attackDamage + ")");
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            //Debug.Log("Dealt Dragon Attack Damage!!!");
+            playerInRange = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            //Debug.Log("Dealt Dragon Attack Damage!!!");
+            playerInRange = false;
         }
     }
 }
