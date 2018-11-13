@@ -41,7 +41,6 @@ public class Interactable : MonoBehaviour {
         player = null;
     }
 
-
     // Used to draw a wire sphere in a scene
     void OnDrawGizmosSelected () {
         Gizmos.color = Color.yellow;
