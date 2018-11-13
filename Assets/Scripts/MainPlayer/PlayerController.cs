@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(PlayerMotor))]
-public class PlayerController : BaseCreature {
+public class PlayerController : BaseCreature
+{
 
     public int healthValue;
     public int basicAttackDamageValue = 10;
@@ -32,7 +33,8 @@ public class PlayerController : BaseCreature {
 	Gear gear;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         dead = false;
         health = healthValue;
         basicAttackDamage = basicAttackDamageValue;
@@ -58,7 +60,8 @@ public class PlayerController : BaseCreature {
     // Sets focus to interactable
     public void SetFocus (Interactable newFocus) {
         // If focus is already set then defocus that first
-        if (newFocus != focus) {
+        if (newFocus != focus)
+        {
             if (focus != null)
                 focus.onDefocused();
 

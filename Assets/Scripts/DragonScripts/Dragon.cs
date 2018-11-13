@@ -43,13 +43,13 @@ public class Dragon : BaseCreature
         }
         actions = new List<IDragonAction>()
         {
-            gameObject.GetComponent<DragonFly>()
-            /*
-            gameObject.GetComponent<DragonWalk>()
-            , gameObject.GetComponent<BasicAttack>()
-            , gameObject.GetComponent<DragonRun>()
-            , gameObject.GetComponent<FlameAttack>()
-            */
+            //gameObject.GetComponent<DragonFly>()
+
+            //gameObject.GetComponent<DragonWalk>()
+            //, gameObject.GetComponent<BasicAttack>()
+            //, gameObject.GetComponent<DragonRun>()
+            //, gameObject.GetComponent<FlameAttack>()
+            //*/
         };
         health = 200;
     }
@@ -105,6 +105,24 @@ public class Dragon : BaseCreature
 
     public void Do()
     {
+        if (actions.Count == 0)
+        {
+
+            actions.Add(gameObject.GetComponent<DragonWalk>());
+            actions.Add(gameObject.GetComponent<BasicAttack>());
+            actions.Add(gameObject.GetComponent<DragonRun>());
+            actions.Add(gameObject.GetComponent<FlameAttack>());
+            actions.Add(gameObject.GetComponent<DragonWalk>());
+            actions.Add(gameObject.GetComponent<BasicAttack>());
+            actions.Add(gameObject.GetComponent<DragonRun>());
+            actions.Add(gameObject.GetComponent<FlameAttack>());
+            actions.Add(gameObject.GetComponent<DragonWalk>());
+            actions.Add(gameObject.GetComponent<BasicAttack>());
+            actions.Add(gameObject.GetComponent<DragonRun>());
+            actions.Add(gameObject.GetComponent<FlameAttack>());
+            actions.Add(gameObject.GetComponent<DragonFly>());
+
+        }
         if (actions[0] is DragonAttack)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
@@ -135,15 +153,7 @@ public class Dragon : BaseCreature
                 }
             }
         }
-        if (actions.Count == 0)
-        {
 
-            actions.Add(gameObject.GetComponent<DragonWalk>());
-            actions.Add(gameObject.GetComponent<BasicAttack>());
-            actions.Add(gameObject.GetComponent<DragonRun>());
-            actions.Add(gameObject.GetComponent<FlameAttack>());
-
-        }
     }
 
     public bool IsPlayingAnimation(string name)
@@ -173,129 +183,6 @@ public class Dragon : BaseCreature
     public override void BasicAttack()
     {
     }
-
-
-
-    /*
-    private bool CanAttack()
-    {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (distance < 20f)
-        {
-            Debug.Log(distance);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    private void Attack()
-    {
-        if (CanAttack())
-        {
-            if (!isAttacking)
-            {
-                isAttacking = true;
-                TriggerAttackAnimation();
-            }
-        }
-    }
-
-    private void TriggerAttackAnimation()
-    {
-        if (isAttacking)
-            anim.SetTrigger(currentAction.Name);
-    }
-
-    protected override void Move()
-    {
-        if (player != null)
-        {
-            // The step size is equal to speed times frame time.
-            float movementStep = movementSpeed * Time.deltaTime;
-            float rotationStep = rotationSpeed * Time.deltaTime;
-
-            // Move our position a step closer to the target.
-            if (!transform.position.Equals(player.transform.position))
-            {
-                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementStep);
-
-                StartMovementAnimation();
-
-                Vector3 targetDir = player.transform.position - transform.position;
-                Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotationStep, 0f);
-                transform.rotation = Quaternion.LookRotation(newDir);
-
-            }
-            else
-            {
-                StopMovementAnimation();
-            }
-        }
-    }
-
-    public void Climb()
-    {
-        float flyingStep = flyingSpeed * Time.deltaTime;
-        if (transform.position.y < climbHeight)
-        {
-            Vector3 movement = transform.position;
-            movement.y = climbHeight;
-            transform.position = Vector3.MoveTowards(transform.position, movement, flyingStep);
-        }
-    }
-
-    public void FlyAway()
-    {
-        if (player != null)
-        {
-            // The step size is equal to speed times frame time.
-            float flyingStep = flyingSpeed * Time.deltaTime;
-            float rotationStep = rotationSpeed * Time.deltaTime;
-
-            // Move our position a step closer to the target.
-            if (Vector3.Distance(transform.position, player.transform.position) < 10f)
-            {
-                transform.LookAt(player.transform);
-                transform.Rotate(0, 180, 0);
-                StartFlyingAnimation();
-                transform.Translate(Vector3.forward * flyingStep);
-
-                Vector3 targetDir = player.transform.position - transform.position;
-                Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotationStep, 0f);
-                transform.rotation = Quaternion.LookRotation(newDir);
-
-            }
-            else
-            {
-
-                StopFlyingAnimation();
-            }
-        }
-    }
-
-    private void StartFlyingAnimation()
-    {
-        anim.SetBool(isFlyingStr, true);
-    }
-
-    private void StopFlyingAnimation()
-    {
-        anim.SetBool(isFlyingStr, false);
-    }
-
-    private void StartMovementAnimation()
-    {
-        anim.SetBool(isWalkingStr, true);
-    }
-
-    private void StopMovementAnimation()
-    {
-        anim.SetBool(isWalkingStr, false);
-    }
-    */
     GameObject GetPlayerToTrack()
     {
         GameObject player = null;
