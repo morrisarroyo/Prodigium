@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : BaseCreature {
@@ -33,6 +34,7 @@ public class PlayerController : BaseCreature {
     void Start() {
         dead = false;
         health = healthValue;
+
         basicAttackDamage = basicAttackDamageValue;
         movementSpeed = movementSpeedValue;
         cam = Camera.main;
