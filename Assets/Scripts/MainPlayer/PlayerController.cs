@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : BaseCreature {
 
-    public int healthValue = 100;
+    public int healthValue;
     public int basicAttackDamageValue = 10;
     public int movementSpeedValue = 5;
 
@@ -29,6 +29,8 @@ public class PlayerController : BaseCreature {
 
     NavMeshAgent nav;
 
+	Gear gear;
+
     // Use this for initialization
     void Start() {
         dead = false;
@@ -41,16 +43,20 @@ public class PlayerController : BaseCreature {
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
         nav.speed = movementSpeed;
+		gear = GetComponent<Gear> ();
     }
 
     // Update is called once per frame
     void Update() {
-        if (!dead)
-            Move();
+		if (!dead) {
+			Move ();
+			if (Input.GetKeyDown (KeyCode.Q))
+				ConsumeHealthPotion ();
+		}
     }
 
     // Sets focus to interactable
-    void SetFocus (Interactable newFocus) {
+    public void SetFocus (Interactable newFocus) {
         // If focus is already set then defocus that first
         if (newFocus != focus) {
             if (focus != null)
@@ -64,7 +70,7 @@ public class PlayerController : BaseCreature {
     }
 
     // Removes focus from interactable
-    void RemoveFocus () {
+    public void RemoveFocus () {
         if (focus != null) {
             focus.onDefocused();
         }
@@ -118,7 +124,11 @@ public class PlayerController : BaseCreature {
     {
         if (!anim.GetBool("attacking"))
         {
-            combat.dealDamage(focus.GetComponent<BaseCreature>(), basicAttackDamage);
+			Weapon weapon = GetComponent<Gear>().currentWeapon;
+			int damageTotal = basicAttackDamage;
+			if (weapon != null)
+				damageTotal = Mathf.RoundToInt(basicAttackDamage * weapon.attackModifier);
+			combat.dealDamage(focus.GetComponent<BaseCreature>(), damageTotal);
             anim.SetTrigger("attack");
         }
     }
@@ -132,9 +142,22 @@ public class PlayerController : BaseCreature {
 
     public override void TakeDamage(int damage)
     {
-        health = health - damage;
+		Armour armour = GetComponent<Gear> ().currentArmour;
+		int damageTotal = damage;
+		if (armour != null)
+			damageTotal = Mathf.RoundToInt(damage / armour.armourModifier);
+        health = health - damageTotal;
         Debug.Log(health);
         if (health <= 0)
             Die();
     }
+
+	public void ConsumeHealthPotion(){
+		if (gear.RemoveHealthPotion()) {
+			health += 100;
+			if (health > healthValue)
+				health = healthValue;
+		}
+		Debug.Log (health);
+	}
 }

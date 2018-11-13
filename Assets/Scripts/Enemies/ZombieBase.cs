@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(ItemDrop))]
 
 public class ZombieBase : BaseCreature
 {
@@ -100,6 +101,7 @@ public class ZombieBase : BaseCreature
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<CapsuleCollider>().isTrigger = true;
         GetComponent<EnemyInteractable>().enabled = false;
+		GetComponent<ItemDrop> ().DropItem ();
         if (destroyOnDeath)
         {
             Destroy(this.gameObject, 3f);
