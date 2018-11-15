@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : BaseCreature
 {
-
+    //public GameObject test;
     public int healthValue;
     public int basicAttackDamageValue = 10;
     public int movementSpeedValue = 5;
@@ -86,50 +86,75 @@ public class PlayerController : BaseCreature
 
     public override void Move()
     {
-
-        //On LEFT mouse click
-        if (Input.GetMouseButtonDown(0))
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            // Moves player to what the raycast hits without focusing on any objects
-            if (Physics.Raycast(ray, out hit, 100, movementMask))
+            //On LEFT mouse click
+            if (Input.GetMouseButtonDown(0))
             {
-                // Move to where we hit
-                motor.MoveToPoint(hit.point);
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
 
-                // Stop focusing any objects
-                RemoveFocus();
-            }
-        }
-
-        // On RIGHT mouse click
-        if (Input.GetMouseButtonDown(1))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            // Moves player to what the raycast hits when focusing on an object
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                //C heck if we hit interactable
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
-
-                // Set focus if the player finds an interactable 
-                if (interactable != null)
+                // Moves player to what the raycast hits without focusing on any objects
+                if (Physics.Raycast(ray, out hit, 100, movementMask))
                 {
-                    SetFocus(interactable);
+                    // Move to where we hit
+                    motor.MoveToPoint(hit.point);
+
+                    // Stop focusing any objects
+                    RemoveFocus();
                 }
             }
+
+            // On RIGHT mouse click
+            if (Input.GetMouseButtonDown(1))
+            {
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                // Moves player to what the raycast hits when focusing on an object
+                if (Physics.Raycast(ray, out hit, 100))
+                {
+                    //C heck if we hit interactable
+                    Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                    // Set focus if the player finds an interactable 
+                    if (interactable != null)
+                    {
+                        SetFocus(interactable);
+                    }
+                }
+            }
+        } else if (Application.platform == RuntimePlatform.PS4) {
+            Vector3 nextDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+            if (nextDir != Vector3.zero)
+            {
+                Vector3 dir = cam.transform.forward;
+                dir.y = 0;
+                nextDir = Vector3.Scale(nextDir, dir);
+                transform.rotation = Quaternion.LookRotation(nextDir);
+                Vector3 movement = transform.position + (transform.forward * 1f);
+                movement.y = 0;
+                Ray ray = cam.ViewportPointToRay(cam.WorldToViewportPoint(movement));
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 100, movementMask))
+                {
+                    motor.MoveToPoint(hit.point);
+                    RemoveFocus();
+                }
+                /*
+                Vector3 dir = cam.transform.forward;
+                dir.y = 0;
+                Quaternion lookRotation = Quaternion.LookRotation(dir.normalized);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 1f);
+                */
+            }
         }
-
-
         /* PS4 Controls */
-        Input.GetAxis("Vertical"); // Left Stick Y Axis
-        Input.GetAxis("Horizontal"); // Left Stick X Axis
-        Input.GetAxis("PS4RightStickX"); // Right Stick Y Axis
-        Input.GetAxis("PS4RightStickY"); // Right Stick X Axis
+        //Input.GetAxis("Vertical"); // Left Stick Y Axis
+        //Input.GetAxis("Horizontal"); // Left Stick X Axis
+        //Input.GetAxis("PS4RightStickX"); // Right Stick Y Axis
+        //Input.GetAxis("PS4RightStickY"); // Right Stick X Axis
     }
 
     public override void BasicAttack()
