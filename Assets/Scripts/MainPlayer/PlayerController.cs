@@ -129,12 +129,17 @@ public class PlayerController : BaseCreature
 
             if (nextDir != Vector3.zero)
             {
-                Vector3 dir = cam.transform.forward;
-                dir.y = 0;
-                nextDir = Vector3.Scale(nextDir, dir);
-                transform.rotation = Quaternion.LookRotation(nextDir);
-                Vector3 movement = transform.position + (transform.forward * 1f);
+                Vector3 camF = cam.transform.forward;
+                Vector3 camR = cam.transform.right;
+                camF.y = 0;
+                camR.y = 0;
+                camF = camF.normalized;
+                camR = camR.normalized;
+
+                Vector3 movement = transform.position + (camF * nextDir.z + camR * nextDir.x);
+                transform.rotation = Quaternion.LookRotation((camF * nextDir.z + camR * nextDir.x).normalized);
                 movement.y = 0;
+
                 Ray ray = cam.ViewportPointToRay(cam.WorldToViewportPoint(movement));
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, movementMask))
@@ -142,12 +147,6 @@ public class PlayerController : BaseCreature
                     motor.MoveToPoint(hit.point);
                     RemoveFocus();
                 }
-                /*
-                Vector3 dir = cam.transform.forward;
-                dir.y = 0;
-                Quaternion lookRotation = Quaternion.LookRotation(dir.normalized);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 1f);
-                */
             }
         }
         /* PS4 Controls */
