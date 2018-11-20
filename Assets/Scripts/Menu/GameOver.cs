@@ -20,18 +20,28 @@ public class GameOver : MonoBehaviour {
                 DisplayScore();
                 ScoreManager.instance.SaveScore();
                 gameOver = true;
+                PauseMenu.GameIsOver = true;
             }
         }
 
     }
 
-    public void DisplayScore() {
+    public void DisplayScore () {
         text.text = "Your score: " + ScoreManager.instance.score;
     }
 
-    public void LoadMenu() {
+    public void LoadMenu () {
+        PauseMenu.GameIsOver = false;
         Debug.Log("Loading menu...");
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+    }
+
+
+    public void LoadGame () {
+        PauseMenu.GameIsOver = false;
+        Debug.Log("Loading game...");
+        SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
 }

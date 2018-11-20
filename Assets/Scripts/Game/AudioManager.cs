@@ -14,13 +14,16 @@ public class AudioManager : MonoBehaviour {
     public Boolean combatMusic;
     [NonSerialized]
     public Boolean backgroundMusic;
+    [NonSerialized]
+    public Boolean menuMusic;
 
     // Use this for initialization
     void Awake () {
 
         bossMusic = false;
         combatMusic = false;
-        backgroundMusic = true;
+        backgroundMusic = false;
+        menuMusic = true;
 
         if (instance == null) {
             instance = this;
@@ -36,11 +39,13 @@ public class AudioManager : MonoBehaviour {
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-	}
+
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     void Start ()
     {
-        Play("BackgroundMusic");
+        Play("MenuMusic");
     }
 	
 	// Update is called once per frame
@@ -52,6 +57,7 @@ public class AudioManager : MonoBehaviour {
             if (!isPlaying("BossMusic")) {
                 Stop("CombatMusic");
                 Stop("BackgroundMusic");
+                Stop("MenuMusic");
                 Play("BossMusic");
             }
 
@@ -59,6 +65,7 @@ public class AudioManager : MonoBehaviour {
             if (!isPlaying("CombatMusic")) {
                 Stop("BossMusic");
                 Stop("BackgroundMusic");
+                Stop("MenuMusic");
                 Play("CombatMusic");
             }
 
@@ -66,7 +73,16 @@ public class AudioManager : MonoBehaviour {
             if (!isPlaying("BackgroundMusic")) {
                 Stop("BossMusic");
                 Stop("CombatMusic");
+                Stop("MenuMusic");
                 Play("BackgroundMusic");
+            }
+
+        } else if (menuMusic) {
+            if (!isPlaying("MenuMusic")) {
+                Stop("BossMusic");
+                Stop("CombatMusic");
+                Stop("BackgroundMusic");
+                Play("MenuMusic");
             }
         }
 
