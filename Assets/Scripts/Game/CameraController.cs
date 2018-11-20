@@ -22,13 +22,23 @@ public class CameraController : MonoBehaviour {
 
     void Update() {
         // Sets what the zoom will be based on mouse scroll
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-        
+        else if (Application.platform == RuntimePlatform.PS4)
+            currentZoom -= Input.GetAxis("PS4R2Axis") * zoomSpeed * Time.deltaTime 
+                + Input.GetAxis("PS4L2Axis") * zoomSpeed * Time.deltaTime;
         // Boundaries for minimum and maximum zoom
         currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
         // Sets what the rotation will be around player using left/right arrows or A/D keys
-        currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+            currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
+        else if (Application.platform == RuntimePlatform.PS4)
+        {
+            currentYaw += Input.GetAxis("PS4RightStickX") * yawSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(target.rotation, transform.rotation, 1f);
+
+        }
     }
 	
 	void LateUpdate () {
