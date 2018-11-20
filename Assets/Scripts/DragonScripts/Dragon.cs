@@ -66,24 +66,40 @@ public class Dragon : BaseCreature
     // Update is called once per frame
     void Update()
     {
-        if (isAwake)
-        {
-            if (health > 0)
+        if (HealthManager.health > 0) { 
+            if (isAwake)
             {
-                Do();
+                if (health > 0)
+                {
+                    if (HealthManager.health <= 0)
+                    {
+                        isAwake = false;
+                    }
+                    else
+                    {
+                        Do();
+                    }
+                }
+                else
+                {
+                    Die();
+                    isAwake = false;
+                    anim.SetBool("IsWaiting", true);
+                    anim.StopPlayback();
+                }
             }
             else
             {
-                Die();
+                if (Vector3.Distance(transform.position, player.transform.position) < wakeDistance)
+                {
+                    isAwake = true;
+                    anim.SetBool("IsWaiting", false);
+                }
             }
-        }
-        else
+        } else
         {
-            if (Vector3.Distance(transform.position, player.transform.position) < wakeDistance)
-            {
-                anim.SetBool("IsWaiting", false);
-                isAwake = true;
-            }
+            anim.StopPlayback();
+            gameObject.GetComponent<Flame>().Deactivate();
         }
         //Climb();
     }
