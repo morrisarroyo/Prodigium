@@ -111,6 +111,7 @@ public class Dragon : BaseCreature
             anim.SetTrigger("Die");
             isAlive = false;
             nav.isStopped = true;
+            GetComponent<EnemyInteractable>().enabled = false;
         }
     }
 

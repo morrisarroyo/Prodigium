@@ -13,7 +13,7 @@ public class ZombieBase : BaseCreature
 {
     public int healthValue = 100;
     public int basicAttackDamageValue = 10;
-    public int movementSpeedValue = 5;
+    public float movementSpeedValue = 5f;
     public int scoreValue = 100;
     public bool destroyOnDeath;
     private bool isSinking;
@@ -68,9 +68,11 @@ public class ZombieBase : BaseCreature
 		
 	public override void Move()
 	{
-		nav.destination = target.position;
-		if (!nav.pathPending && nav.remainingDistance > attackRadius) {
-			nav.isStopped = false;
+		if (!anim.GetCurrentAnimatorStateInfo (0).IsName ("attack")) {
+			nav.destination = target.position;
+			if (!nav.pathPending && nav.remainingDistance > attackRadius) {
+				nav.isStopped = false;
+			}
 		}
 	}
 		

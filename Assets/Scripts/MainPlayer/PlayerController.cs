@@ -86,7 +86,8 @@ public class PlayerController : BaseCreature
 
     public override void Move()
     {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor
+			|| Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
         {
             //On LEFT mouse click
             if (Input.GetMouseButtonDown(0))

@@ -31,7 +31,8 @@ public class CameraController : MonoBehaviour {
         currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
         // Sets what the rotation will be around player using left/right arrows or A/D keys
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor
+			|| Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
             currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
         else if (Application.platform == RuntimePlatform.PS4)
         {
