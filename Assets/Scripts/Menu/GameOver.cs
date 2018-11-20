@@ -31,6 +31,7 @@ public class GameOver : MonoBehaviour {
     }
 
     public void LoadMenu() {
+        PauseMenu.GameIsOver = false;
         Debug.Log("Loading menu...");
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
@@ -38,6 +39,7 @@ public class GameOver : MonoBehaviour {
 
 
     public void LoadGame() {
+        PauseMenu.GameIsOver = false;
         Debug.Log("Loading game...");
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
