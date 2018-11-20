@@ -13,8 +13,10 @@ public class Scoreboard : MonoBehaviour {
     public Text score3;
 
     void Start () {
-        AudioManager.instance.menuMusic = true;
+        AudioManager.instance.bossMusic = false;
+        AudioManager.instance.combatMusic = false;
         AudioManager.instance.backgroundMusic = false;
+        AudioManager.instance.menuMusic = true;
     }
 
     public void DisplayScoreboard () {
