@@ -1842,10 +1842,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca7e608d9555488baa3c82ad594875c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: 100
-  basicAttackDamageValue: 10
+  healthValue: 400
+  basicAttackDamageValue: 25
   movementSpeedValue: 3
-  destroyOnDeath: 0
+  destroyOnDeath: 1
   lookRadius: 12
   attackRadius: 3.5
   attackSpeed: 2
@@ -1862,15 +1862,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   droppableItems:
   - item: {fileID: 114640500998902908, guid: ef3e1c5a516cd48d9b394ee1ef1974bc, type: 2}
-    dropChance: 7
+    dropChance: 100
   - item: {fileID: 114941354205478140, guid: d2d3926052cf14f1b9797c75c8841405, type: 2}
-    dropChance: 5
+    dropChance: 100
   - item: {fileID: 114052397546762620, guid: 1e997bb7e787a45cd97b056071b92f49, type: 2}
-    dropChance: 10
+    dropChance: 100
   - item: {fileID: 114555452421643154, guid: 2fae138f3ad754a25b8495301f11ddbd, type: 2}
-    dropChance: 5
+    dropChance: 100
   - item: {fileID: 114522349602792820, guid: 790a974abde9a4081bb57c08d1ca8279, type: 2}
-    dropChance: 25
+    dropChance: 100
 --- !u!114 &114619085169464346
 MonoBehaviour:
   m_ObjectHideFlags: 1

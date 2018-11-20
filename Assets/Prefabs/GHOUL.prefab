@@ -613,6 +613,8 @@ GameObject:
   - component: {fileID: 114084830918776242}
   - component: {fileID: 114824472630655488}
   - component: {fileID: 114991958048670282}
+  - component: {fileID: 114260974221544536}
+  - component: {fileID: 114097092720964396}
   m_Layer: 0
   m_Name: GHOUL
   m_TagString: Untagged
@@ -1723,6 +1725,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c6ba3ff4fb9874c92140b07b184c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114097092720964396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687208914525136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e50655d924f6449905bf0a43d91fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114260974221544536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687208914525136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8ce4bf5088948309e57ab59ffc660c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppableItems:
+  - item: {fileID: 114640500998902908, guid: ef3e1c5a516cd48d9b394ee1ef1974bc, type: 2}
+    dropChance: 7
+  - item: {fileID: 114941354205478140, guid: d2d3926052cf14f1b9797c75c8841405, type: 2}
+    dropChance: 5
+  - item: {fileID: 114052397546762620, guid: 1e997bb7e787a45cd97b056071b92f49, type: 2}
+    dropChance: 10
+  - item: {fileID: 114555452421643154, guid: 2fae138f3ad754a25b8495301f11ddbd, type: 2}
+    dropChance: 5
+  - item: {fileID: 114522349602792820, guid: 790a974abde9a4081bb57c08d1ca8279, type: 2}
+    dropChance: 25
 --- !u!114 &114824472630655488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1747,12 +1782,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 100
-  basicAttackDamageValue: 10
-  movementSpeedValue: 5
-  destroyOnDeath: 0
+  basicAttackDamageValue: 15
+  movementSpeedValue: 4
+  destroyOnDeath: 1
   lookRadius: 10
   attackRadius: 2.2
-  attackSpeed: 2
+  attackSpeed: 1
 --- !u!136 &136120255568212740
 CapsuleCollider:
   m_ObjectHideFlags: 1
