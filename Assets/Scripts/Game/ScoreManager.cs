@@ -27,14 +27,13 @@ public class ScoreManager : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-    }
 
-    void Start () {
+
         highScore1 = PlayerPrefs.GetInt("HighScore1", 0);
         highScore2 = PlayerPrefs.GetInt("HighScore2", 0);
         highScore3 = PlayerPrefs.GetInt("HighScore3", 0);
-    }   
-	
+    }
+    
 	// Update is called once per frame
 	void Update () {
         scoreText.text = score.ToString();
