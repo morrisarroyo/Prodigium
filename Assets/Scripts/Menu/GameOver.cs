@@ -26,11 +26,11 @@ public class GameOver : MonoBehaviour {
 
     }
 
-    public void DisplayScore() {
+    public void DisplayScore () {
         text.text = "Your score: " + ScoreManager.instance.score;
     }
 
-    public void LoadMenu() {
+    public void LoadMenu () {
         PauseMenu.GameIsOver = false;
         Debug.Log("Loading menu...");
         SceneManager.LoadScene(0);
@@ -38,7 +38,7 @@ public class GameOver : MonoBehaviour {
     }
 
 
-    public void LoadGame() {
+    public void LoadGame () {
         PauseMenu.GameIsOver = false;
         Debug.Log("Loading game...");
         SceneManager.LoadScene(1);

@@ -31,7 +31,11 @@ public class AudioDetection : MonoBehaviour {
             }
         }
 
-        if (bosses > 0) {
+        if (HealthManager.health == 0) {
+            AudioManager.instance.bossMusic = false;
+            AudioManager.instance.combatMusic = false;
+            AudioManager.instance.backgroundMusic = false;
+        } else if (bosses > 0) {
             AudioManager.instance.bossMusic = true;
             AudioManager.instance.combatMusic = false;
             AudioManager.instance.backgroundMusic = false;

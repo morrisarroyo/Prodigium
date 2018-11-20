@@ -28,6 +28,8 @@ public class ScoreManager : MonoBehaviour {
             return;
         }
 
+        AudioManager.instance.backgroundMusic = true;
+        AudioManager.instance.menuMusic = false;
 
         highScore1 = PlayerPrefs.GetInt("HighScore1", 0);
         highScore2 = PlayerPrefs.GetInt("HighScore2", 0);
