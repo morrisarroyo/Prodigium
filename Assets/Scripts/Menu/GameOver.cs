@@ -9,7 +9,7 @@ public class GameOver : MonoBehaviour {
     public GameObject gameOverUI;
     public Text text;
 
-    bool gameOver = false;
+    public bool gameOver = false;
 
     // Update is called once per frame
     void Update () {
