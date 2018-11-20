@@ -13,12 +13,14 @@ public class Flame : MonoBehaviour
     {
         var em = flameParticle.emission;
         em.enabled = false;
+        AudioManager.instance.Stop("DragonFlame");
     }
 
     public void Activate()
     {
         var em = flameParticle.emission;
         em.enabled = true;
+        AudioManager.instance.Play("DragonFlame");
     }
 
 }

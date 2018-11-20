@@ -159,6 +159,7 @@ public class PlayerController : BaseCreature
 		if (armour != null)
 			damageTotal = Mathf.RoundToInt(damage / armour.armourModifier);
         health = health - damageTotal;
+        HealthManager.health = health;
         Debug.Log(health);
         if (health <= 0)
             Die();
@@ -169,7 +170,8 @@ public class PlayerController : BaseCreature
 			health += 100;
 			if (health > healthValue)
 				health = healthValue;
-		}
-		Debug.Log (health);
+                HealthManager.health = health;
+        }
+        Debug.Log (health);
 	}
 }
