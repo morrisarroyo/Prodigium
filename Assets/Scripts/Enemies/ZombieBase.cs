@@ -14,6 +14,7 @@ public class ZombieBase : BaseCreature
     public int healthValue = 100;
     public int basicAttackDamageValue = 10;
     public float movementSpeedValue = 5f;
+    public int scoreValue = 100;
     public bool destroyOnDeath;
     private bool isSinking;
 
@@ -104,6 +105,7 @@ public class ZombieBase : BaseCreature
         GetComponent<CapsuleCollider>().isTrigger = true;
         GetComponent<EnemyInteractable>().enabled = false;
 		GetComponent<ItemDrop> ().DropItem ();
+        ScoreManager.instance.score += scoreValue;
         if (destroyOnDeath)
         {
             Destroy(this.gameObject, 3f);

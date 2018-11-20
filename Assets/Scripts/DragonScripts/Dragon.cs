@@ -13,6 +13,8 @@ public class Dragon : BaseCreature
     const float basicAttackMaxDistance = 1f;
     const float flameAttackMaxDistance = 1f;
 
+    public int scoreValue = 10000;
+
     //public int health;
     //public int basicAttackDamage;
     //public float flyingSpeed = 2f;
@@ -37,6 +39,7 @@ public class Dragon : BaseCreature
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
+
         if (player.Equals(null))
         {
             player = GetPlayerToTrack();
@@ -204,7 +207,9 @@ public class Dragon : BaseCreature
     {
         health = health - damage;
         Debug.Log(health);
-        if (health <= 0)
+        if (health <= 0) {
+            ScoreManager.instance.score += scoreValue;
             Die();
+        }
     }
 }
