@@ -140,7 +140,7 @@ public class Dragon : BaseCreature
             actions.Add(gameObject.GetComponent<BasicAttack>());
             actions.Add(gameObject.GetComponent<DragonRun>());
             actions.Add(gameObject.GetComponent<FlameAttack>());
-            actions.Add(gameObject.GetComponent<DragonFly>());
+            //actions.Add(gameObject.GetComponent<DragonFly>());
 
         }
         if (actions[0] is DragonAttack)

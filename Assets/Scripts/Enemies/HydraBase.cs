@@ -11,8 +11,9 @@ public class HydraBase : BaseCreature {
 	public float movementSpeedValue = 5f;
 	public bool destroyOnDeath;
 	private bool isSinking;
+    public int scoreValue = 5000;
 
-	GameObject player;
+    GameObject player;
 	Transform target;
 	Animator anim;
 	NavMeshAgent nav;
@@ -96,7 +97,8 @@ public class HydraBase : BaseCreature {
 		GetComponent<BoxCollider>().isTrigger = true;
 		GetComponent<EnemyInteractable>().enabled = false;
 		GetComponent<ItemDrop> ().DropItem ();
-		if (destroyOnDeath)
+        ScoreManager.instance.score += scoreValue;
+        if (destroyOnDeath)
 		{
 			Destroy(gameObject, 7f);
 		}

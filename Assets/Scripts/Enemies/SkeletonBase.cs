@@ -16,8 +16,9 @@ public class SkeletonBase : BaseCreature {
 	public float movementSpeedValue = 5f;
 	public bool destroyOnDeath;
 	private bool isSinking;
+    public int scoreValue = 100;
 
-	GameObject player;
+    GameObject player;
 	Transform target;
 	Animator anim;
 	NavMeshAgent nav;
@@ -101,7 +102,8 @@ public class SkeletonBase : BaseCreature {
 		GetComponent<CapsuleCollider>().isTrigger = true;
 		GetComponent<EnemyInteractable>().enabled = false;
 		GetComponent<ItemDrop> ().DropItem ();
-		if (destroyOnDeath)
+        ScoreManager.instance.score += scoreValue;
+        if (destroyOnDeath)
 		{
 			Destroy(this.gameObject, 3f);
 		}

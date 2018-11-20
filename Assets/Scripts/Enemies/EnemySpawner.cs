@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
@@ -42,12 +43,12 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject newEnemy = (GameObject)Instantiate (enemiesToSpawn[Random.Range(0,enemiesToSpawn.Length)], spawnPoint, Quaternion.identity);
 		}
 	}
-    /*
+    
 	void OnDrawGizmos(){
 		Handles.color = Color.blue;
 		Handles.DrawWireArc (transform.position+new Vector3(0,0.2f,0), transform.up, transform.right, 360, detectionRange);
 		Handles.color = Color.green;
 		Handles.DrawWireArc (transform.position+new Vector3(0,0.2f,0), transform.up, transform.right, 360, spawnRange);
 	}
-    */
+    
 }

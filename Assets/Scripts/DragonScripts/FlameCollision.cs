@@ -6,13 +6,15 @@ public class FlameCollision : MonoBehaviour
 {
     public ParticleSystem flameParticle;
     public List<ParticleCollisionEvent> collisionEvents;
-    public int damage = 1;
+    public int damage = 4;
     public int particlePerDamage = 10;
 
     void Start()
     {
         flameParticle = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
+        damage = 10;
+        particlePerDamage = 10;
     }
 
     void OnParticleCollision(GameObject other)

@@ -9,7 +9,8 @@ public class GhoulBase : BaseCreature {
 	public int healthValue = 100;
 	public int basicAttackDamageValue = 10;
 	public float movementSpeedValue = 5f;
-	public bool destroyOnDeath;
+    public int scoreValue = 1000;
+    public bool destroyOnDeath;
 	private bool isSinking;
 
 	GameObject player;
@@ -96,7 +97,8 @@ public class GhoulBase : BaseCreature {
 		GetComponent<CapsuleCollider>().isTrigger = true;
 		GetComponent<EnemyInteractable>().enabled = false;
 		GetComponent<ItemDrop> ().DropItem ();
-		if (destroyOnDeath)
+        ScoreManager.instance.score += scoreValue;
+        if (destroyOnDeath)
 		{
 			Destroy(this.gameObject, 3f);
 		}

@@ -642,8 +642,6 @@ GameObject:
   - component: {fileID: 114831455224897812}
   - component: {fileID: 114690226912442200}
   - component: {fileID: 114188346482898684}
-  - component: {fileID: 114046147001375050}
-  - component: {fileID: 114243596296795512}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: EnemyBoss
@@ -3348,18 +3346,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 12
   rotationSpeed: 3
---- !u!114 &114046147001375050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1404680554479296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c86ef48236ebf04b9dbfef46a582a49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
 --- !u!114 &114109412823074396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3387,17 +3373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flameParticle: {fileID: 198086567305964926}
---- !u!114 &114243596296795512
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1404680554479296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45c6ba3ff4fb9874c92140b07b184c3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114363138762532826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3410,7 +3385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repeatCount: 3
-  attackDamage: 20
+  attackDamage: 100
 --- !u!114 &114420733879362694
 MonoBehaviour:
   m_ObjectHideFlags: 1

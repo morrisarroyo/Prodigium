@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 114421151969287990}
   m_Layer: 0
   m_Name: SKELETON
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1224,7 +1224,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436304781113310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.84747, y: -0.0051651, z: -28.18219}
+  m_LocalPosition: {x: 247.49118, y: -0.00000023841858, z: 215.78232}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4151662267676524}
@@ -1809,10 +1809,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe4d89e0f50c463db9c7ca60689006f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: 100
+  healthValue: 25
   basicAttackDamageValue: 10
   movementSpeedValue: 3
   destroyOnDeath: 1
+  scoreValue: 100
   lookRadius: 10
   attackRadius: 1.5
   attackSpeed: 2

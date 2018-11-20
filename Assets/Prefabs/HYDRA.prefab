@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 114518352426904372}
   m_Layer: 0
   m_Name: HYDRA
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1364,7 +1364,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1559099728278318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.669415, y: -0.0051651, z: -28.578335}
+  m_LocalPosition: {x: 254.48799, y: 0, z: 221.15746}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4969035857016850}
@@ -1843,12 +1843,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 400
-  basicAttackDamageValue: 25
+  basicAttackDamageValue: 40
   movementSpeedValue: 3
   destroyOnDeath: 1
+  scoreValue: 5000
   lookRadius: 12
   attackRadius: 3.5
-  attackSpeed: 2
+  attackSpeed: 1
 --- !u!114 &114518352426904372
 MonoBehaviour:
   m_ObjectHideFlags: 1
