@@ -3,7 +3,7 @@ guid: 8f78a5dd4539bc648bd5220dcd7cca03
 timeCreated: 1476466101
 licenseType: Store
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     100002: GHOUL_
@@ -122,20 +122,22 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 'MuscleClip ''GHOUL@attack2HitCombo''conversion warning:
-      ''GHOUL_/GHOUL_ Pelvis/GHOUL_ Spine'' has translation animation. It is not supported.
-
-
-'
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'GHOUL_ Spine' has translation animation that
+      will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 0
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations:
@@ -149,6 +151,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -161,7 +164,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.1454269
+        functionName: GhoulAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5380123
+        functionName: GhoulAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -322,6 +339,7 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -342,12 +360,12 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
   importAnimation: 1
   copyAvatar: 1
   humanDescription:
+    serializedVersion: 2
     human:
     - boneName: GHOUL_ Pelvis
       humanName: Hips
@@ -767,301 +785,306 @@ ModelImporter:
         modified: 0
     skeleton:
     - name: GHOUL(Clone)
+      parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: GHOUL
-      position: {x: -7.84487586e-09, y: 0, z: 0}
-      rotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
+      parentName: 
+      position: {x: -0.000000007844876, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: GHOUL_
-      position: {x: 0, y: 1.23399997, z: -.0829999894}
-      rotation: {x: -.500000358, y: .499999672, z: .499999672, w: .500000358}
+      parentName: 
+      position: {x: 0, y: 1.234, z: -0.08299999}
+      rotation: {x: -0.50000036, y: 0.49999967, z: 0.49999967, w: 0.50000036}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: GHOUL_ Pelvis
-      position: {x: 0, y: 0, z: .0696651936}
-      rotation: {x: .49999997, y: -.500000834, z: -.499999285, w: -.5}
-      scale: {x: .999999881, y: 1, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: 0, y: 0, z: 0.06966519}
+      rotation: {x: 0.49999997, y: -0.50000083, z: -0.49999928, w: -0.5}
+      scale: {x: 0.9999999, y: 1, z: 0.9999999}
     - name: GHOUL_ Spine
-      position: {x: -.153690562, y: .013599338, z: 1.52599384e-07}
-      rotation: {x: 1.87754608e-06, y: 6.25848713e-07, z: .203144848, w: -.979148746}
+      parentName: 
+      position: {x: -0.15369056, y: 0.013599338, z: 0.00000015259938}
+      rotation: {x: 0.0000018775461, y: 0.0000006258487, z: 0.20314485, w: -0.97914875}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: GHOUL_ Spine1
-      position: {x: -.256736666, y: -.000214080806, z: -5.93863625e-10}
-      rotation: {x: -1.49011559e-08, y: -2.38418494e-07, z: .0370452851, w: -.999313593}
-      scale: {x: .999999762, y: .999999762, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.25673667, y: -0.0002140808, z: -5.938636e-10}
+      rotation: {x: -0.000000014901156, y: -0.0000002384185, z: 0.037045285, w: -0.9993136}
+      scale: {x: 0.99999976, y: 0.99999976, z: 1}
     - name: GHOUL_ L Clavicle
-      position: {x: -.250819534, y: .0017506408, z: .0676516891}
-      rotation: {x: -.593848228, y: .0628512651, z: .800957978, w: -.0431329347}
-      scale: {x: .999999881, y: 1.00000048, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.25081953, y: 0.0017506408, z: 0.06765169}
+      rotation: {x: -0.5938482, y: 0.062851265, z: 0.800958, w: -0.043132935}
+      scale: {x: 0.9999999, y: 1.0000005, z: 1}
     - name: GHOUL_ L UpperArm
-      position: {x: -.18392089, y: -7.62939436e-08, z: 0}
-      rotation: {x: -.285133064, y: .130915433, z: -.0230467487, w: .949225545}
-      scale: {x: .999999702, y: .99999994, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.18392089, y: -0.000000076293944, z: 0}
+      rotation: {x: -0.28513306, y: 0.13091543, z: -0.023046749, w: 0.94922554}
+      scale: {x: 0.9999997, y: 0.99999994, z: 1.0000002}
     - name: GHOUL_ L Forearm
-      position: {x: -.383168548, y: -1.90734859e-08, z: 0}
-      rotation: {x: -.00725376653, y: .0282429922, z: .0311186239, w: .999090254}
-      scale: {x: 1.00000048, y: .999999821, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.38316855, y: -0.000000019073486, z: 0}
+      rotation: {x: -0.0072537665, y: 0.028242992, z: 0.031118624, w: 0.99909025}
+      scale: {x: 1.0000005, y: 0.9999998, z: 1}
     - name: GHOUL_ L Hand
-      position: {x: -.372963846, y: -9.53674295e-09, z: 0}
-      rotation: {x: .706375062, y: -.0252208132, z: .0252410527, w: -.70693779}
-      scale: {x: 1, y: 1.00000024, z: 1.00000036}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.37296385, y: -0.000000009536743, z: 0}
+      rotation: {x: 0.70637506, y: -0.025220813, z: 0.025241053, w: -0.7069378}
+      scale: {x: 1, y: 1.0000002, z: 1.0000004}
     - name: GHOUL_ L Finger0
-      position: {x: -.0505213924, y: .0206602477, z: -.0314812362}
-      rotation: {x: -.8417961, y: .107245959, z: -.0467876084, w: -.526961684}
-      scale: {x: 1.0000006, y: 1.0000006, z: .999999404}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.050521392, y: 0.020660248, z: -0.031481236}
+      rotation: {x: -0.8417961, y: 0.10724596, z: -0.04678761, w: -0.5269617}
+      scale: {x: 1.0000006, y: 1.0000006, z: 0.9999994}
     - name: GHOUL_ L Finger01
-      position: {x: -.0511828586, y: 0, z: 7.62939436e-08}
-      rotation: {x: 1.45751912e-07, y: 1.67637978e-07, z: -.037769381, w: .999286532}
-      scale: {x: .999999344, y: .999999344, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.05118286, y: 0, z: 0.000000076293944}
+      rotation: {x: 0.00000014575191, y: 0.00000016763798, z: -0.03776938, w: 0.99928653}
+      scale: {x: 0.99999934, y: 0.99999934, z: 0.9999999}
     - name: GHOUL_ L Finger02
-      position: {x: -.0392064676, y: 3.81469718e-08, z: 0}
-      rotation: {x: -8.94069601e-08, y: 1.49011594e-08, z: -.232073784, w: .972698212}
-      scale: {x: 1.00000024, y: 1.00000024, z: 1.00000012}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.039206468, y: 0.000000038146972, z: 0}
+      rotation: {x: -0.00000008940696, y: 0.000000014901159, z: -0.23207378, w: 0.9726982}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
     - name: GHOUL_ L Finger1
-      position: {x: -.127460241, y: .0179093927, z: -.0485165007}
-      rotation: {x: -.00802974217, y: -.370971531, z: -.059067294, w: .926729023}
-      scale: {x: .999999642, y: 1.00000012, z: .999999642}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.12746024, y: 0.017909393, z: -0.0485165}
+      rotation: {x: -0.008029742, y: -0.37097153, z: -0.059067294, w: 0.926729}
+      scale: {x: 0.99999964, y: 1.0000001, z: 0.99999964}
     - name: GHOUL_ L Finger11
-      position: {x: -.0539562218, y: 0, z: -3.33786012e-08}
-      rotation: {x: -4.47034729e-08, y: 2.98023153e-08, z: -.0377718396, w: .999286354}
-      scale: {x: 1, y: 1, z: 1.00000012}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.05395622, y: 0, z: -0.0000000333786}
+      rotation: {x: -0.000000044703473, y: 0.000000029802315, z: -0.03777184, w: 0.99928635}
+      scale: {x: 1, y: 1, z: 1.0000001}
     - name: GHOUL_ L Finger12
-      position: {x: -.0495830514, y: 0, z: -3.33786012e-08}
-      rotation: {x: -1.49011612e-08, y: 2.98023224e-08, z: -.116402179, w: .993202209}
-      scale: {x: .999999881, y: .999999404, z: .999999523}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.04958305, y: 0, z: -0.0000000333786}
+      rotation: {x: -0.000000014901161, y: 0.000000029802322, z: -0.11640218, w: 0.9932022}
+      scale: {x: 0.9999999, y: 0.9999994, z: 0.9999995}
     - name: GHOUL_ L Finger2
-      position: {x: -.127412945, y: .00895797741, z: -.0143902395}
-      rotation: {x: .0015617942, y: -.027388107, z: -.0713741705, w: .997072279}
-      scale: {x: .999999881, y: .999999881, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.12741295, y: 0.008957977, z: -0.0143902395}
+      rotation: {x: 0.0015617942, y: -0.027388107, z: -0.07137417, w: 0.9970723}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
     - name: GHOUL_ L Finger21
-      position: {x: -.0716306269, y: 0, z: -9.53674295e-09}
-      rotation: {x: 2.28173942e-08, y: -7.46920421e-07, z: -.0321916975, w: .999481738}
-      scale: {x: .999999821, y: .999999344, z: .999999404}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.07163063, y: 0, z: -0.000000009536743}
+      rotation: {x: 0.000000022817394, y: -0.0000007469204, z: -0.032191698, w: 0.99948174}
+      scale: {x: 0.9999998, y: 0.99999934, z: 0.9999994}
     - name: GHOUL_ L Finger22
-      position: {x: -.0481239296, y: -1.52587887e-07, z: -1.90734859e-08}
-      rotation: {x: .00810646266, y: .0543107241, z: -.147405177, w: .987550676}
-      scale: {x: 1.0000006, y: 1.00000024, z: 1.00000072}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.04812393, y: -0.00000015258789, z: -0.000000019073486}
+      rotation: {x: 0.008106463, y: 0.054310724, z: -0.14740518, w: 0.9875507}
+      scale: {x: 1.0000006, y: 1.0000002, z: 1.0000007}
     - name: GHOUL_ L Finger3
-      position: {x: -.133817896, y: .00687957741, z: .0199453533}
-      rotation: {x: -.00218310137, y: -.013871761, z: -.105302848, w: .994341075}
-      scale: {x: .999999881, y: .999999404, z: .999999583}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.1338179, y: 0.0068795774, z: 0.019945353}
+      rotation: {x: -0.0021831014, y: -0.013871761, z: -0.10530285, w: 0.9943411}
+      scale: {x: 0.9999999, y: 0.9999994, z: 0.9999996}
     - name: GHOUL_ L Finger31
-      position: {x: -.0571754426, y: 0, z: -3.81469718e-08}
-      rotation: {x: -2.68919269e-08, y: -5.4948007e-08, z: -.029353641, w: .999569118}
-      scale: {x: 1.00000048, y: .999999881, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.057175443, y: 0, z: -0.000000038146972}
+      rotation: {x: -0.000000026891927, y: -0.000000054948007, z: -0.029353641, w: 0.9995691}
+      scale: {x: 1.0000005, y: 0.9999999, z: 0.9999999}
     - name: GHOUL_ L Finger32
-      position: {x: -.0463414751, y: 0, z: -9.53674295e-09}
-      rotation: {x: -3.72528994e-08, y: -2.235174e-08, z: -.217246175, w: .976116896}
-      scale: {x: 1.00000083, y: 1.00000024, z: 1.00000072}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.046341475, y: 0, z: -0.000000009536743}
+      rotation: {x: -0.0000000372529, y: -0.00000002235174, z: -0.21724617, w: 0.9761169}
+      scale: {x: 1.0000008, y: 1.0000002, z: 1.0000007}
     - name: GHOUL_ L Finger4
-      position: {x: -.119016111, y: .00207443233, z: .0516375639}
-      rotation: {x: .0718602091, y: -.0259990431, z: -.0973507911, w: .992311895}
-      scale: {x: .999999821, y: .999999762, z: 1.00000036}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.11901611, y: 0.0020744323, z: 0.051637564}
+      rotation: {x: 0.07186021, y: -0.025999043, z: -0.09735079, w: 0.9923119}
+      scale: {x: 0.9999998, y: 0.99999976, z: 1.0000004}
     - name: GHOUL_ L Finger41
-      position: {x: -.0547448732, y: 0, z: 0}
-      rotation: {x: 1.55996496e-08, y: 4.15369783e-07, z: -.0312823877, w: .999510646}
-      scale: {x: 1.00000083, y: .999999881, z: 1.00000048}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.054744873, y: 0, z: 0}
+      rotation: {x: 0.00000001559965, y: 0.00000041536978, z: -0.031282388, w: 0.99951065}
+      scale: {x: 1.0000008, y: 0.9999999, z: 1.0000005}
     - name: GHOUL_ L Finger42
-      position: {x: -.0449635312, y: -7.62939436e-08, z: -3.81469718e-08}
-      rotation: {x: -1.2293458e-07, y: -3.7252903e-08, z: -.235543758, w: .971863747}
-      scale: {x: .999999821, y: .999999642, z: .999999225}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.04496353, y: -0.000000076293944, z: -0.000000038146972}
+      rotation: {x: -0.00000012293458, y: -0.000000037252903, z: -0.23554376, w: 0.97186375}
+      scale: {x: 0.9999998, y: 0.99999964, z: 0.9999992}
     - name: GHOUL_ Neck
-      position: {x: -.292901307, y: -.000145034792, z: -4.02505973e-10}
-      rotation: {x: 0, y: 0, z: -.000703573052, w: .999999762}
-      scale: {x: .999999881, y: .999999642, z: .999999702}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.2929013, y: -0.00014503479, z: -4.0250597e-10}
+      rotation: {x: 0, y: 0, z: -0.00070357305, w: 0.99999976}
+      scale: {x: 0.9999999, y: 0.99999964, z: 0.9999997}
     - name: GHOUL_ Head
-      position: {x: -.190549925, y: 0, z: 0}
-      rotation: {x: 0, y: -2.08616257e-07, z: .0571134016, w: .998367727}
-      scale: {x: 1, y: 1.00000012, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.19054992, y: 0, z: 0}
+      rotation: {x: 0, y: -0.00000020861626, z: 0.0571134, w: 0.9983677}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
     - name: GHOUL_ Ponytail1
-      position: {x: -.0351013169, y: .0795874, z: 7.83371206e-07}
-      rotation: {x: -2.98023224e-08, y: -2.41398811e-06, z: .879699528, w: -.475530118}
-      scale: {x: 1.00000012, y: 1, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.035101317, y: 0.0795874, z: 0.0000007833712}
+      rotation: {x: -0.000000029802322, y: -0.000002413988, z: 0.8796995, w: -0.47553012}
+      scale: {x: 1.0000001, y: 1, z: 1.0000002}
     - name: GHOUL_ R Clavicle
-      position: {x: -.250819534, y: .0017510223, z: -.0676516742}
-      rotation: {x: -.593847454, y: .0628539547, z: -.800958216, w: .0431348346}
-      scale: {x: .999999762, y: .999999881, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.25081953, y: 0.0017510223, z: -0.067651674}
+      rotation: {x: -0.59384745, y: 0.062853955, z: -0.8009582, w: 0.043134835}
+      scale: {x: 0.99999976, y: 0.9999999, z: 0.9999999}
     - name: GHOUL_ R UpperArm
-      position: {x: -.18392086, y: 0, z: 0}
-      rotation: {x: .285133213, y: -.130915806, z: -.0230469704, w: .949225485}
-      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.18392086, y: 0, z: 0}
+      rotation: {x: 0.2851332, y: -0.1309158, z: -0.02304697, w: 0.9492255}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     - name: GHOUL_ R Forearm
-      position: {x: -.383168519, y: 0, z: -1.52587887e-07}
-      rotation: {x: .0072537926, y: -.0282430537, z: .0311186593, w: .999090314}
-      scale: {x: 1.00000036, y: 1.00000024, z: 1.00000012}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.38316852, y: 0, z: -0.00000015258789}
+      rotation: {x: 0.0072537926, y: -0.028243054, z: 0.03111866, w: 0.9990903}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000001}
     - name: GHOUL_ R Hand
-      position: {x: -.372963846, y: -2.86102289e-08, z: 0}
-      rotation: {x: -.706375122, y: .0252207462, z: .0252409223, w: -.70693773}
-      scale: {x: .999999225, y: .999999702, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.37296385, y: -0.000000028610229, z: 0}
+      rotation: {x: -0.7063751, y: 0.025220746, z: 0.025240922, w: -0.70693773}
+      scale: {x: 0.9999992, y: 0.9999997, z: 0.9999999}
     - name: GHOUL_ R Finger4
-      position: {x: -.119016036, y: .00207458483, z: -.0516375527}
-      rotation: {x: -.0718602836, y: .0259990618, z: -.0973516405, w: .992311895}
-      scale: {x: 1.00000048, y: 1.00000024, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.11901604, y: 0.0020745848, z: -0.051637553}
+      rotation: {x: -0.07186028, y: 0.025999062, z: -0.09735164, w: 0.9923119}
+      scale: {x: 1.0000005, y: 1.0000002, z: 0.9999999}
     - name: GHOUL_ R Finger41
-      position: {x: -.0547449104, y: 0, z: 0}
-      rotation: {x: 2.04890867e-07, y: -8.4936579e-07, z: -.0312843062, w: .999510527}
-      scale: {x: .999999702, y: .999999821, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.05474491, y: 0, z: 0}
+      rotation: {x: 0.00000020489087, y: -0.0000008493658, z: -0.031284306, w: 0.9995105}
+      scale: {x: 0.9999997, y: 0.9999998, z: 1}
     - name: GHOUL_ R Finger42
-      position: {x: -.0449636057, y: 7.62939436e-08, z: 3.81469718e-08}
-      rotation: {x: 0, y: -7.45057971e-09, z: -.235543549, w: .971863747}
-      scale: {x: 1.00000024, y: 1, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.044963606, y: 0.000000076293944, z: 0.000000038146972}
+      rotation: {x: 0, y: -0.0000000074505797, z: -0.23554355, w: 0.97186375}
+      scale: {x: 1.0000002, y: 1, z: 1}
     - name: GHOUL_ R Finger0
-      position: {x: -.0505213924, y: .0206602477, z: .0314812548}
-      rotation: {x: .841796219, y: -.107245483, z: -.0467875078, w: -.526961505}
-      scale: {x: 1.00000048, y: 1.00000095, z: 1.00000083}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.050521392, y: 0.020660248, z: 0.031481255}
+      rotation: {x: 0.8417962, y: -0.10724548, z: -0.046787508, w: -0.5269615}
+      scale: {x: 1.0000005, y: 1.000001, z: 1.0000008}
     - name: GHOUL_ R Finger01
-      position: {x: -.0511828586, y: -7.62939436e-08, z: 0}
-      rotation: {x: 2.98023188e-08, y: 3.27825518e-07, z: -.037769299, w: .999286532}
-      scale: {x: 1, y: 1.00000012, z: .99999994}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.05118286, y: -0.000000076293944, z: 0}
+      rotation: {x: 0.000000029802319, y: 0.00000032782552, z: -0.0377693, w: 0.99928653}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
     - name: GHOUL_ R Finger02
-      position: {x: -.0392063893, y: 3.81469718e-08, z: 0}
-      rotation: {x: 1.19209261e-07, y: -2.68220845e-07, z: -.232073814, w: .972698212}
-      scale: {x: .999999881, y: 1, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.03920639, y: 0.000000038146972, z: 0}
+      rotation: {x: 0.00000011920926, y: -0.00000026822084, z: -0.23207381, w: 0.9726982}
+      scale: {x: 0.9999999, y: 1, z: 1.0000002}
     - name: GHOUL_ R Finger1
-      position: {x: -.127460241, y: .0179093927, z: .048516497}
-      rotation: {x: .00802788604, y: .370973051, z: -.0590690002, w: .926728308}
-      scale: {x: 1.00000048, y: 1.00000036, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.12746024, y: 0.017909393, z: 0.048516497}
+      rotation: {x: 0.008027886, y: 0.37097305, z: -0.059069, w: 0.9267283}
+      scale: {x: 1.0000005, y: 1.0000004, z: 0.9999999}
     - name: GHOUL_ R Finger11
-      position: {x: -.0539562218, y: -1.52587887e-07, z: -2.38418565e-08}
-      rotation: {x: 1.82539154e-07, y: 5.66243898e-07, z: -.0377700105, w: .999286473}
-      scale: {x: .999999881, y: .999999762, z: 1.00000012}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.05395622, y: -0.00000015258789, z: -0.000000023841856}
+      rotation: {x: 0.00000018253915, y: 0.0000005662439, z: -0.03777001, w: 0.9992865}
+      scale: {x: 0.9999999, y: 0.99999976, z: 1.0000001}
     - name: GHOUL_ R Finger12
-      position: {x: -.0495830514, y: 0, z: 3.33786012e-08}
-      rotation: {x: 8.94069174e-08, y: -1.34110365e-07, z: -.116402201, w: .99320215}
-      scale: {x: .999999881, y: 1.00000012, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.04958305, y: 0, z: 0.0000000333786}
+      rotation: {x: 0.00000008940692, y: -0.00000013411037, z: -0.1164022, w: 0.99320215}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1.0000002}
     - name: GHOUL_ R Finger2
-      position: {x: -.127412871, y: .00895813014, z: .0143902581}
-      rotation: {x: -.00156181271, y: .0273881331, z: -.0713741854, w: .997072339}
-      scale: {x: 1, y: 1.00000012, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.12741287, y: 0.00895813, z: 0.014390258}
+      rotation: {x: -0.0015618127, y: 0.027388133, z: -0.071374185, w: 0.99707234}
+      scale: {x: 1, y: 1.0000001, z: 0.9999999}
     - name: GHOUL_ R Finger21
-      position: {x: -.0716306269, y: 0, z: -9.53674295e-09}
-      rotation: {x: -2.98023117e-08, y: -4.3772144e-07, z: -.0321927331, w: .999481738}
-      scale: {x: 1.00000024, y: .999999821, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.07163063, y: 0, z: -0.000000009536743}
+      rotation: {x: -0.000000029802312, y: -0.00000043772144, z: -0.032192733, w: 0.99948174}
+      scale: {x: 1.0000002, y: 0.9999998, z: 1}
     - name: GHOUL_ R Finger22
-      position: {x: -.0481239296, y: 0, z: 9.53674295e-09}
-      rotation: {x: -.00810640864, y: -.0543107949, z: -.147405162, w: .987550676}
-      scale: {x: .999999642, y: .99999994, z: 1.00000012}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.04812393, y: 0, z: 0.000000009536743}
+      rotation: {x: -0.008106409, y: -0.054310795, z: -0.14740516, w: 0.9875507}
+      scale: {x: 0.99999964, y: 0.99999994, z: 1.0000001}
     - name: GHOUL_ R Finger3
-      position: {x: -.133817747, y: .00687973015, z: -.019945316}
-      rotation: {x: .0021830902, y: .0138716241, z: -.105303623, w: .994340956}
-      scale: {x: 1.00000036, y: 1, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.13381775, y: 0.00687973, z: -0.019945316}
+      rotation: {x: 0.0021830902, y: 0.013871624, z: -0.10530362, w: 0.99434096}
+      scale: {x: 1.0000004, y: 1, z: 0.9999999}
     - name: GHOUL_ R Finger31
-      position: {x: -.0571754426, y: 0, z: -5.72204577e-08}
-      rotation: {x: -4.47034587e-08, y: -8.60541547e-07, z: -.0293489732, w: .999569297}
-      scale: {x: .99999994, y: .99999994, z: .999999821}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.057175443, y: 0, z: -0.000000057220458}
+      rotation: {x: -0.00000004470346, y: -0.00000086054155, z: -0.029348973, w: 0.9995693}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999998}
     - name: GHOUL_ R Finger32
-      position: {x: -.0463414751, y: 0, z: 3.81469718e-08}
-      rotation: {x: -9.68575478e-08, y: 7.4505806e-09, z: -.217246175, w: .976116896}
-      scale: {x: 1.00000012, y: .999999881, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.046341475, y: 0, z: 0.000000038146972}
+      rotation: {x: -0.00000009685755, y: 0.000000007450581, z: -0.21724617, w: 0.9761169}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1.0000002}
     - name: GHOUL_ L Thigh
-      position: {x: 1.52587887e-07, y: 2.19345083e-07, z: .111951493}
-      rotation: {x: -.0960883945, y: .977008581, z: .160551608, w: .102198258}
-      scale: {x: .999999642, y: 1, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.00000015258789, y: 0.00000021934508, z: 0.11195149}
+      rotation: {x: -0.096088395, y: 0.9770086, z: 0.16055161, w: 0.10219826}
+      scale: {x: 0.99999964, y: 1, z: 0.9999999}
     - name: GHOUL_ L Calf
-      position: {x: -.634533286, y: 0, z: 0}
-      rotation: {x: -2.235174e-08, y: -4.470348e-08, z: .255818218, w: .966724873}
-      scale: {x: 1, y: 1.00000012, z: .999999821}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.6345333, y: 0, z: 0}
+      rotation: {x: -0.00000002235174, y: -0.00000004470348, z: 0.25581822, w: 0.9667249}
+      scale: {x: 1, y: 1.0000001, z: 0.9999998}
     - name: GHOUL_ L Foot
-      position: {x: -.585408032, y: -2.86102289e-08, z: 0}
-      rotation: {x: -.000389233086, y: .0856843889, z: -.143713936, w: .985902786}
-      scale: {x: 1.00000024, y: 1, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.58540803, y: -0.000000028610229, z: 0}
+      rotation: {x: -0.0003892331, y: 0.08568439, z: -0.14371394, w: 0.9859028}
+      scale: {x: 1.0000002, y: 1, z: 1.0000002}
     - name: GHOUL_ L Toe0
-      position: {x: -.101161666, y: .206575498, z: 0}
-      rotation: {x: -2.98023188e-08, y: 7.89129686e-08, z: -.707106709, w: .707106888}
-      scale: {x: 1.00000024, y: 1.00000012, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.101161666, y: 0.2065755, z: 0}
+      rotation: {x: -0.000000029802319, y: 0.00000007891297, z: -0.7071067, w: 0.7071069}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
     - name: GHOUL_ R Thigh
-      position: {x: -1.52587887e-07, y: -1.04904174e-07, z: -.111951508}
-      rotation: {x: -.102644376, y: .977529526, z: -.15919517, w: -.0925039425}
-      scale: {x: .999999881, y: 1, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.00000015258789, y: -0.000000104904174, z: -0.11195151}
+      rotation: {x: -0.10264438, y: 0.9775295, z: -0.15919517, w: -0.09250394}
+      scale: {x: 0.9999999, y: 1, z: 1}
     - name: GHOUL_ R Calf
-      position: {x: -.634533286, y: -3.81469718e-08, z: -3.81469718e-08}
-      rotation: {x: -2.98023224e-08, y: 5.96046448e-08, z: .254069746, w: .967185974}
-      scale: {x: .99999994, y: .999999702, z: .999999642}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.6345333, y: -0.000000038146972, z: -0.000000038146972}
+      rotation: {x: -0.000000029802322, y: 0.000000059604645, z: 0.25406975, w: 0.967186}
+      scale: {x: 0.99999994, y: 0.9999997, z: 0.99999964}
     - name: GHOUL_ R Foot
-      position: {x: -.585407972, y: -3.81469718e-08, z: 0}
-      rotation: {x: .00465550972, y: -.0756640807, z: -.13749297, w: .987597644}
-      scale: {x: 1.00000012, y: 1.00000024, z: 1.00000036}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.585408, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.0046555097, y: -0.07566408, z: -0.13749297, w: 0.98759764}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000004}
     - name: GHOUL_ R Toe0
-      position: {x: -.101161666, y: .206575453, z: -3.81469718e-08}
-      rotation: {x: -2.98023224e-08, y: -7.89129899e-08, z: -.707106769, w: .707106888}
-      scale: {x: 1, y: 1, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.101161666, y: 0.20657545, z: -0.000000038146972}
+      rotation: {x: -0.000000029802322, y: -0.00000007891299, z: -0.70710677, w: 0.7071069}
+      scale: {x: 1, y: 1, z: 0.9999999}
     - name: GHOUL_ARM_RIGHT_BOILS
-      position: {x: -7.84487586e-09, y: 0, z: 0}
-      rotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
+      parentName: 
+      position: {x: -0.000000007844876, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: GHOUL_LEG_LEFT_BOILS
-      position: {x: -7.84487586e-09, y: 0, z: 0}
-      rotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
+      parentName: 
+      position: {x: -0.000000007844876, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a4e58f45bdd9d984d83f6b298c01b2c2,
     type: 3}
   animationType: 3
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

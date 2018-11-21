@@ -13,7 +13,7 @@ public class GameOver : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (HealthManager.health == 0) {
+        if (HealthManager.health <= 0) {
             if (!gameOver) {
                 gameOverUI.SetActive(true);
                 Time.timeScale = 0f;

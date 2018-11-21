@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 114006534559180866}
   - component: {fileID: 114342184550013420}
   - component: {fileID: 114168544130288560}
+  - component: {fileID: 114425072932195584}
   m_Layer: 0
   m_Name: UNDEAD
   m_TagString: Enemy
@@ -2493,6 +2494,17 @@ MonoBehaviour:
   lookRadius: 10
   attackRadius: 1
   attackSpeed: 2
+--- !u!114 &114425072932195584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024411094884712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17884c98156368e40bc4469ee415c7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114578569224780064
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 114991958048670282}
   - component: {fileID: 114260974221544536}
   - component: {fileID: 114097092720964396}
+  - component: {fileID: 114243829896763524}
   m_Layer: 0
   m_Name: GHOUL
   m_TagString: Enemy
@@ -1734,6 +1735,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4e50655d924f6449905bf0a43d91fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114243829896763524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687208914525136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17884c98156368e40bc4469ee415c7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114260974221544536

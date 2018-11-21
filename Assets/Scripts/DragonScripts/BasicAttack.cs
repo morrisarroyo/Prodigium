@@ -33,7 +33,6 @@ public class BasicAttack : DragonAttack
         dragon = GetComponent<Dragon>();
         combat = GetComponent<Combat>();
         IsDoing = false;
-        repeatCount = 3; // -1
         currentRepeatCount = repeatCount;
         playerInRange = false;
         player = dragon.player;

@@ -642,6 +642,7 @@ GameObject:
   - component: {fileID: 114831455224897812}
   - component: {fileID: 114690226912442200}
   - component: {fileID: 114188346482898684}
+  - component: {fileID: 114913159152100720}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: EnemyBoss
@@ -3392,7 +3393,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1404680554479296}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a6d9dcf2207684a880178d886bae00, type: 3}
   m_Name: 
@@ -3466,6 +3467,17 @@ MonoBehaviour:
   distance: 3
   movementSpeed: 6
   rotationSpeed: 3
+--- !u!114 &114913159152100720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1404680554479296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17884c98156368e40bc4469ee415c7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136469870945242500
 CapsuleCollider:
   m_ObjectHideFlags: 1

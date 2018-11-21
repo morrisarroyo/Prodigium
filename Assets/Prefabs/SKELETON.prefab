@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 114004657762773662}
   - component: {fileID: 114797238111287700}
   - component: {fileID: 114421151969287990}
+  - component: {fileID: 114484628010944854}
   m_Layer: 0
   m_Name: SKELETON
   m_TagString: Enemy
@@ -1849,6 +1850,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45c6ba3ff4fb9874c92140b07b184c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114484628010944854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436304781113310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17884c98156368e40bc4469ee415c7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114797238111287700

@@ -525,6 +525,7 @@ GameObject:
   - component: {fileID: 114312440009663930}
   - component: {fileID: 114918730193158696}
   - component: {fileID: 114518352426904372}
+  - component: {fileID: 114442798596877008}
   m_Layer: 0
   m_Name: HYDRA
   m_TagString: Enemy
@@ -1849,7 +1850,18 @@ MonoBehaviour:
   scoreValue: 5000
   lookRadius: 12
   attackRadius: 3.5
-  attackSpeed: 1
+  attackSpeed: 2
+--- !u!114 &114442798596877008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1559099728278318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17884c98156368e40bc4469ee415c7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114518352426904372
 MonoBehaviour:
   m_ObjectHideFlags: 1
