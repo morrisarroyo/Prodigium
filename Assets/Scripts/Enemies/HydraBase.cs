@@ -37,7 +37,7 @@ public class HydraBase : BaseCreature {
 		transform.rotation = Random.rotation;
 		combat = GetComponent<Combat> ();
 		nav.speed = Random.Range((float)(movementSpeed - movementSpeed * .2), (float)(movementSpeed + movementSpeed * .2));
-		Physics.OverlapSphere (transform.position, 5f);
+		Physics.OverlapSphere (transform.position, 6f);
 	}
 	
 	// Update is called once per frame

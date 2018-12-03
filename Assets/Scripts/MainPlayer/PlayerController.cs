@@ -12,6 +12,8 @@ public class PlayerController : BaseCreature
     public int basicAttackDamageValue = 10;
     public int movementSpeedValue = 5;
 
+    public GameObject slashPrefab;
+
     // Used to set focus
     public Interactable focus;
 
@@ -79,7 +81,6 @@ public class PlayerController : BaseCreature
         if (focus != null) {
             focus.onDefocused();
         }
-
         focus = null;
         motor.StopFollowingTarget();
     }
@@ -125,6 +126,12 @@ public class PlayerController : BaseCreature
                     }
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.E)) {
+                if (!anim.GetBool("attacking")) {
+                    Instantiate(slashPrefab, transform);
+                }
+            }
         } else if (Application.platform == RuntimePlatform.PS4) {
             Vector3 nextDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
@@ -157,15 +164,26 @@ public class PlayerController : BaseCreature
         //Input.GetAxis("PS4RightStickY"); // Right Stick X Axis
     }
 
+    public int CalculatedDamage() {
+        Weapon weapon = GetComponent<Gear>().currentWeapon;
+        int damageTotal = basicAttackDamage;
+        if (weapon != null)
+            damageTotal = Mathf.RoundToInt(basicAttackDamage * weapon.attackModifier);
+        return damageTotal;
+    }
+
     public override void BasicAttack()
     {
         if (!anim.GetBool("attacking"))
         {
-			Weapon weapon = GetComponent<Gear>().currentWeapon;
-			int damageTotal = basicAttackDamage;
-			if (weapon != null)
-				damageTotal = Mathf.RoundToInt(basicAttackDamage * weapon.attackModifier);
-			combat.dealDamage(focus.GetComponent<BaseCreature>(), damageTotal);
+			combat.dealDamage(focus.GetComponent<BaseCreature>(), CalculatedDamage());
+            anim.SetTrigger("attack");
+        }
+    }
+
+    public void BasicAttack(BaseCreature baseCreature) {
+        if (!anim.GetBool("attacking")) {
+            combat.dealDamage(baseCreature, CalculatedDamage());
             anim.SetTrigger("attack");
         }
     }
@@ -185,7 +203,6 @@ public class PlayerController : BaseCreature
 			damageTotal = Mathf.RoundToInt(damage / armour.armourModifier);
         health = health - damageTotal;
         HealthManager.health = health;
-        Debug.Log(health);
         if (health <= 0)
             Die();
     }
@@ -197,6 +214,5 @@ public class PlayerController : BaseCreature
 				health = healthValue;
                 HealthManager.health = health;
         }
-        Debug.Log (health);
 	}
 }

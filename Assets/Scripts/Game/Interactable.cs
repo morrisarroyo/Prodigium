@@ -3,7 +3,7 @@
 public class Interactable : MonoBehaviour {
 
     // Distance player needs to get to object to interact
-    public float radius = 1.5f;
+    public float radius;
 
     bool isFocus = false;
     Transform player;
