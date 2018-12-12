@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54921024650007290}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1051382368471578}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 43.66, y: 0.247, z: -21.993}
+  m_LocalPosition: {x: 86.12739, y: 0, z: 243.21}
   m_LocalScale: {x: 1, y: 1, z: 0.6496971}
   m_Children:
   - {fileID: 4159509087626008}
@@ -158,7 +158,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65713716982410312
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -169,8 +169,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1215744, y: 0.45325327, z: 1.5051632}
-  m_Center: {x: -0.00004196167, y: 0.011767268, z: 0.7232847}
+  m_Size: {x: 0.22382185, y: 0.50016004, z: 1.5051632}
+  m_Center: {x: 0.023793578, y: 0.0067126825, z: 0.7232847}
 --- !u!108 &108793230915275384
 Light:
   m_ObjectHideFlags: 1
@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eb79f16686143f2b8aab399a1de669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameUI: {fileID: 0}
   _name: Sword
   _desc: Sword for physical damage
   _icon: {fileID: 0}

@@ -10,6 +10,8 @@ TagManager:
   - Chest
   - Enemy
   - EnemyBoss
+  - WorldUI
+  - item
   layers:
   - Default
   - TransparentFX

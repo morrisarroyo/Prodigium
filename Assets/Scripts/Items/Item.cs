@@ -8,6 +8,7 @@ public abstract class Item : MonoBehaviour {
 	public string name { get; set;}
 	public string desc { get; set;}
 	public Sprite icon { get; set;}
+    public GameUI gameUI;
 
 	public abstract void Equip();
 }

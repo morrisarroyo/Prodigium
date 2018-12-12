@@ -13,7 +13,10 @@ public class Dragon : BaseCreature
     const float basicAttackMaxDistance = 1f;
     const float flameAttackMaxDistance = 1f;
 
+    private Flame flame;
+    private CapsuleCollider col;
     public int scoreValue = 10000;
+    public ParticleSystem flameParticle;
 
     //public int health;
     //public int basicAttackDamage;
@@ -23,6 +26,7 @@ public class Dragon : BaseCreature
     public float wakeDistance = 7f;
     //public float climbHeight = 5f;
     public GameObject player;
+    public int healthNum;
 
     bool isAwake = false;
     bool isAttacking = false;
@@ -39,7 +43,8 @@ public class Dragon : BaseCreature
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
-
+        flame = GetComponent<Flame>();
+        col = GetComponent<CapsuleCollider>();
         if (player.Equals(null))
         {
             player = GetPlayerToTrack();
@@ -54,7 +59,7 @@ public class Dragon : BaseCreature
             //, gameObject.GetComponent<FlameAttack>()
             //*/
         };
-        health = 200;
+        health = healthNum;
     }
 
 
@@ -82,7 +87,10 @@ public class Dragon : BaseCreature
                 }
                 else
                 {
-                    Die();
+
+                    if (isAlive)
+                        Die();
+                   
                     isAwake = false;
                     anim.SetBool("IsWaiting", true);
                     anim.StopPlayback();
@@ -106,13 +114,18 @@ public class Dragon : BaseCreature
 
     public override void Die()
     {
-        if (isAlive)
-        {
+            Destroy(gameObject, 7f);
             anim.SetTrigger("Die");
-            isAlive = false;
             nav.isStopped = true;
+            var em = flameParticle.emission;
+            em.enabled = false;
             GetComponent<EnemyInteractable>().enabled = false;
-        }
+            col.enabled = false;
+            //GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            isAlive = false;
+        //transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.down, Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -229,4 +242,5 @@ public class Dragon : BaseCreature
             Die();
         }
     }
+    
 }

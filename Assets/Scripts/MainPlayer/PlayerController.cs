@@ -56,7 +56,7 @@ public class PlayerController : BaseCreature
     void Update() {
 		if (!dead) {
 			Move ();
-			if (Input.GetKeyDown (KeyCode.Q))
+			if (Input.GetKeyDown (KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton2))
 				ConsumeHealthPotion ();
 		}
     }
@@ -99,6 +99,7 @@ public class PlayerController : BaseCreature
                 // Moves player to what the raycast hits without focusing on any objects
                 if (Physics.Raycast(ray, out hit, 100, movementMask))
                 {
+                    Debug.DrawLine(cam.transform.position, hit.transform.position, Color.red, 1f);
                     // Move to where we hit
                     motor.MoveToPoint(hit.point);
 
@@ -116,6 +117,7 @@ public class PlayerController : BaseCreature
                 // Moves player to what the raycast hits when focusing on an object
                 if (Physics.Raycast(ray, out hit, 100))
                 {
+                    
                     //C heck if we hit interactable
                     Interactable interactable = hit.collider.GetComponent<Interactable>();
 
@@ -129,6 +131,16 @@ public class PlayerController : BaseCreature
 
             if (Input.GetKeyDown(KeyCode.E)) {
                 if (!anim.GetBool("attacking")) {
+                    Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+
+                    // Moves player to what the raycast hits when focusing on an object
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                    {
+                        Interactable interactable = hit.collider.GetComponent<Interactable>();
+                        if (interactable != null)
+                            transform.LookAt(hit.transform.position);
+                    }
                     Instantiate(slashPrefab, transform);
                 }
             }
@@ -155,6 +167,10 @@ public class PlayerController : BaseCreature
                     motor.MoveToPoint(hit.point);
                     RemoveFocus();
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.JoystickButton5))
+            {
+                Instantiate(slashPrefab, transform);
             }
         }
         /* PS4 Controls */
@@ -215,4 +231,26 @@ public class PlayerController : BaseCreature
                 HealthManager.health = health;
         }
 	}
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if ((Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.F)) && collision.gameObject.tag == "item")
+        {
+            collision.gameObject.GetComponent<Interactable>().Interact();
+        }
+        if (collision.gameObject.name == "HealthPotion(Clone)")
+            collision.gameObject.GetComponent<Interactable>().Interact();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "HealthPotion(Clone)")
+            collision.gameObject.GetComponent<Interactable>().Interact();
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.name == "HealthPotion(Clone)")
+            collision.gameObject.GetComponent<Interactable>().Interact();
+    }
 }

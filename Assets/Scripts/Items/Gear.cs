@@ -6,14 +6,14 @@ using UnityEngine.AI;
 public class Gear : MonoBehaviour {
 
 	public static Gear instance;
+    public GameUI gameUI;
 
 	void Awake(){
 		if (instance != null) {
-			Debug.Log ("More than one isntance of Gear found!");
+			Debug.Log ("More than one instance of Gear found!");
 			return;
 		}
 		instance = this;
-		
 	}
 
 	public Weapon currentWeapon;
@@ -37,6 +37,7 @@ public class Gear : MonoBehaviour {
 		currentWeapon = w;
 		currentWeapon.GetComponent<Collider> ().enabled = false;
 		currentWeapon.Equip ();
+        gameUI.UpdateWeaponImage(w is Sword);
 	}
 
 	public void EquipArmour (Armour a){
@@ -48,13 +49,14 @@ public class Gear : MonoBehaviour {
 		currentArmour = a;
 		currentArmour.GetComponent<Collider> ().enabled = false;
 		currentArmour.Equip ();
+        gameUI.UpdateArmourImage(a is PlateArmour);
 	}
 
 	public bool RemoveHealthPotion(){
 		if (healthPotions > 0) {
 			healthPotions--;
-			Debug.Log ("REMOVING: "+healthPotions);
-			return true;
+            gameUI.UpdateHealthPots(healthPotions);
+            return true;
 		} else
 			return false;
 	}
@@ -62,6 +64,6 @@ public class Gear : MonoBehaviour {
 	public void AddHealthPotion(HealthPotion hp){
 		hp.Equip ();
 		healthPotions++;
-		Debug.Log ("ADDING: "+healthPotions);
+        gameUI.UpdateHealthPots(healthPotions);
 	}
 }

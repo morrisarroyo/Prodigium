@@ -14,7 +14,18 @@ public class SlashDetection : MonoBehaviour {
     private void OnCollisionEnter(Collision collider) {
         GameObject col = collider.gameObject;
         Debug.Log(col.name);
-        if (col.tag == "Enemy" || col.tag == "EnemyBoss") {
+        if (col.tag == "Enemy") {
+            Debug.Log("hit: " + col.name);
+            player.GetComponent<PlayerController>().BasicAttack(col.GetComponent<BaseCreature>());
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject col = other.gameObject;
+        Debug.Log(col.name);
+        if (col.tag == "EnemyBoss")
+        {
             Debug.Log("hit: " + col.name);
             player.GetComponent<PlayerController>().BasicAttack(col.GetComponent<BaseCreature>());
         }

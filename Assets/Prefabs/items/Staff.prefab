@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 54586021128630026}
   m_Layer: 0
   m_Name: Staff
-  m_TagString: Untagged
+  m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715030768686272}
   m_LocalRotation: {x: -0, y: -0.5657234, z: -0, w: 0.8245951}
-  m_LocalPosition: {x: 46.04, y: 0.106, z: -26.73}
+  m_LocalPosition: {x: 86.42393, y: -0.00000011920929, z: 243.41042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4020211323135406}
@@ -157,7 +157,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65279878365416468
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -168,8 +168,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.30641556, y: 0.18649197, z: 1.6363506}
-  m_Center: {x: 0.0021648407, y: -0.014159679, z: -0.023285866}
+  m_Size: {x: 0.30641556, y: 0.30339527, z: 1.7208431}
+  m_Center: {x: 0.002164841, y: 0.0159657, z: -0.036408007}
 --- !u!108 &108405017077591926
 Light:
   m_ObjectHideFlags: 1
@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b658bd4828f49ef935a98d84d5b632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameUI: {fileID: 0}
   _name: Staff
   _desc: Staff for magic
   _icon: {fileID: 0}

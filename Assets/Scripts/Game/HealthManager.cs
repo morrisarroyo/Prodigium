@@ -7,6 +7,7 @@ public class HealthManager : MonoBehaviour
 {
 
     public static float health;
+    public Text healthText;
     Image healthFill;
 
     // Use this for initialization, Awake happens before Start
@@ -20,5 +21,6 @@ public class HealthManager : MonoBehaviour
     void Update()
     {
         healthFill.fillAmount = health / 1000;
+        healthText.text = health + "/ 1000";
     }
 }

@@ -516,9 +516,7 @@ GameObject:
   - component: {fileID: 4489849448327478}
   - component: {fileID: 95700028012783856}
   - component: {fileID: 54861826031566436}
-  - component: {fileID: 65518677233038810}
   - component: {fileID: 65371614642412738}
-  - component: {fileID: 114166206258125582}
   - component: {fileID: 114619085169464346}
   - component: {fileID: 195779411153425142}
   - component: {fileID: 114874809668910544}
@@ -1365,7 +1363,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1559099728278318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254.48799, y: 0, z: 221.15746}
+  m_LocalPosition: {x: 43.744164, y: -0.0051651, z: -28.988117}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4969035857016850}
@@ -1789,20 +1787,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1888657, y: 5.206209, z: 4.7682037}
-  m_Center: {x: 0.057186127, y: 2.1031046, z: -0.5299263}
---- !u!65 &65518677233038810
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559099728278318}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.1245804, y: 1.3655605, z: 3.9004555}
-  m_Center: {x: -0.010837555, y: 3.3599977, z: 3.8053684}
+  m_Size: {x: 2.1888657, y: 5.206209, z: 9.109741}
+  m_Center: {x: 0.057186127, y: 2.1031046, z: 1.6408424}
 --- !u!95 &95700028012783856
 Animator:
   serializedVersion: 3
@@ -1820,18 +1806,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114166206258125582
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559099728278318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c86ef48236ebf04b9dbfef46a582a49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 1.5
 --- !u!114 &114312440009663930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2027,7 +2001,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1559099728278318}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
