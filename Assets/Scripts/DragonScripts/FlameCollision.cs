@@ -6,8 +6,8 @@ public class FlameCollision : MonoBehaviour
 {
     public ParticleSystem flameParticle;
     public List<ParticleCollisionEvent> collisionEvents;
-    public int damage = 4;
-    public int particlePerDamage = 10;
+    private int damage = 1;
+    private int particlePerDamage = 1;
 
     void Start()
     {

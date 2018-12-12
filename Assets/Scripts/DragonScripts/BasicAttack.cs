@@ -80,9 +80,9 @@ public class BasicAttack : DragonAttack
             else
             {
                 anim.SetTrigger(Name);
+                --currentRepeatCount;
             }
 
-            --currentRepeatCount;
         }
     }
 
