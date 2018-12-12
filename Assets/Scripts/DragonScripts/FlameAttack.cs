@@ -48,6 +48,7 @@ public class FlameAttack : DragonAttack
         {
             IsDoing = true;
             TriggerAttackAnimation();
+
         }
     }
 

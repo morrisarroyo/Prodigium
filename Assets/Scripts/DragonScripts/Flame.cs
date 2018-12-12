@@ -11,6 +11,9 @@ public class Flame : MonoBehaviour
     }
     public void Deactivate()
     {
+
+
+        AudioManager.instance.SetVolume("DragonFlame", 0f);
         var em = flameParticle.emission;
         em.enabled = false;
         AudioManager.instance.Stop("DragonFlame");
@@ -18,6 +21,8 @@ public class Flame : MonoBehaviour
 
     public void Activate()
     {
+
+        AudioManager.instance.SetVolume("DragonFlame", 0.7f);
         var em = flameParticle.emission;
         em.enabled = true;
         AudioManager.instance.Play("DragonFlame");

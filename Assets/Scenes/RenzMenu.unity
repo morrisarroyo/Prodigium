@@ -799,8 +799,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuUI: {fileID: 670942244}
   optionsUI: {fileID: 1482230547}
+  toggleUI: {fileID: 1211025889}
   audioMixer: {fileID: 24100000, guid: 14fa4c0a707c2254fad37842bbd26c16, type: 2}
   volumeOn: 0
+  checkVolume: 0
 --- !u!1001 &132411308
 Prefab:
   m_ObjectHideFlags: 0
@@ -17321,7 +17323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.3, y: 17.3}
+  m_AnchoredPosition: {x: 38.3, y: 19.33}
   m_SizeDelta: {x: 20.5, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1211025891
@@ -18215,10 +18217,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1482230547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0c6d5d34bc7594db7c589250ae01be, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a64f0c5814dc194a8e82e6d039e87a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
+  - {fileID: 1211025889}
   - {fileID: 310616540}
 --- !u!114 &1482230550
 MonoBehaviour:

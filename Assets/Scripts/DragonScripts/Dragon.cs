@@ -67,6 +67,7 @@ public class Dragon : BaseCreature
     {
         //gameObject.GetComponent<BasicAttack>().Do();
         anim.SetBool("IsWaiting", true);
+
     }
     // Update is called once per frame
     void Update()
@@ -114,8 +115,14 @@ public class Dragon : BaseCreature
 
     public override void Die()
     {
+            Destroy(anim, 7f);
             Destroy(gameObject, 7f);
             anim.SetTrigger("Die");
+            gameObject.GetComponent<Flame>().enabled = false;            
+            anim.SetBool("IsWaiting", true);
+            anim.StopPlayback();
+            AudioManager.instance.SetVolume("DragonFlame", 0);
+            gameObject.GetComponent<FlameAttack>().enabled = false;
             nav.isStopped = true;
             var em = flameParticle.emission;
             em.enabled = false;

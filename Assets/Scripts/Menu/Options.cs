@@ -9,24 +9,33 @@ public class Options : MonoBehaviour {
 
     public GameObject menuUI;
     public GameObject optionsUI;
+    public GameObject toggleUI;
 
     public AudioMixer audioMixer;
 
     public bool volumeOn;
+    public float checkVolume;
 
     void Start () {
-        volumeOn = true;
+        audioMixer.GetFloat("volume", out checkVolume);
+        if (checkVolume == 0) {
+            toggleUI.GetComponent<Toggle>().isOn = true;
+            volumeOn = true;
+        } else {
+            toggleUI.GetComponent<Toggle>().isOn = false;
+            volumeOn = false;
+        }
     }
 
     public void ToggleVolume () {
         if (volumeOn) {
             audioMixer.SetFloat("volume", -80);
 
-            volumeOn = !volumeOn;
+            volumeOn = false;
         } else {
             audioMixer.SetFloat("volume", 0);
 
-            volumeOn = !volumeOn;
+            volumeOn = true;
         }
     }
 

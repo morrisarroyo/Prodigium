@@ -32,6 +32,7 @@ public class FlameCollision : MonoBehaviour
                 if (count == 0)
                 {
                     other.GetComponent<PlayerController>().TakeDamage(damage);
+                    
                     Debug.Log(damage);
                 }
                 i++;
